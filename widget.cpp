@@ -7,6 +7,7 @@ Widget::Widget(QWidget *parent)
     this->setWindowFlag(Qt::FramelessWindowHint);
     this->setStyleSheet("background-color:rgb(233,232,227);");
     _final_layout=new QVBoxLayout(this);
+    this->move(100,200);
 
     // ====== 标题栏 ======
     _title_layout=new QHBoxLayout(this);
@@ -36,6 +37,20 @@ Widget::~Widget()
 
 void Widget::on_quit_button_clicked(){
     this->close();
+}
+
+static QPoint last(100,200);
+void Widget::mousePressEvent(QMouseEvent *event){
+    if(event->y()<25) last=event->globalPos();
+}
+
+void Widget::mouseMoveEvent(QMouseEvent *event){
+    if(event->y()<25){
+        int dx=event->globalX()-last.x();
+        int dy=event->globalY()-last.y();
+        last=event->globalPos();
+        this->move(this->x()+dx,this->y()+dy);
+    }
 }
 
 void Widget::test(){

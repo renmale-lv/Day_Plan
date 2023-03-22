@@ -6,6 +6,8 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QMouseEvent>
+#include <QPoint>
 
 class Widget : public QWidget
 {
@@ -23,7 +25,9 @@ private:
 
     //测试函数
     void test();
-
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 private slots:
     void on_quit_button_clicked();
 };
