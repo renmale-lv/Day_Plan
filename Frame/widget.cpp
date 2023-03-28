@@ -14,6 +14,7 @@ Widget::Widget(QWidget *parent)
     _title_bar=new QLabel(this);
     _title_bar->setMinimumHeight(25);
     _title_bar->setMaximumHeight(25);
+    _title_bar->setStyleSheet("background:transparent;");
     _title_layout->addWidget(_title_bar);
     _quit_button=new QPushButton(this);
     _quit_button->setMaximumSize(30,25);
@@ -24,11 +25,17 @@ Widget::Widget(QWidget *parent)
     _final_layout->addLayout(_title_layout);
     _final_layout->setMargin(0);
 
+    // ====== 主界面 ======
+    _tab_widget=new QTabWidget(this);
+    _tab_widget->tabBar()->hide();
+    _final_layout->addWidget(_tab_widget);
+
+    _final_layout->setSpacing(0);
 
     // ====== 槽函数链接 ======
     connect(_quit_button,&QPushButton::clicked,this,&Widget::on_quit_button_clicked);
 
-    test();
+//    test();
 }
 
 Widget::~Widget()
@@ -54,7 +61,6 @@ void Widget::mouseMoveEvent(QMouseEvent *event){
 }
 
 void Widget::test(){
-    _title_bar->setStyleSheet("background-color:#000000;");
     _quit_button->setStyleSheet("background-color:red;");
     _final_layout->addStretch();
 }

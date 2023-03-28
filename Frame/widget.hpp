@@ -8,6 +8,8 @@
 #include <QPushButton>
 #include <QMouseEvent>
 #include <QPoint>
+#include <QTabWidget>
+#include <QTabBar>
 
 class Widget : public QWidget
 {
@@ -22,6 +24,7 @@ private:
     QVBoxLayout* _final_layout;
     QPushButton* _quit_button;
     QHBoxLayout* _title_layout;
+    QTabWidget* _tab_widget;
 
     //测试函数
     void test();

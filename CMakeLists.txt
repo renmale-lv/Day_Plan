@@ -14,8 +14,6 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        widget.cpp
-        widget.hpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -58,3 +56,9 @@ install(TARGETS Day_Plan
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(Day_Plan)
 endif()
+
+add_subdirectory(Frame)
+add_subdirectory(Design)
+
+target_link_libraries(Day_Plan PRIVATE Frame)
+target_include_directories(Day_Plan PUBLIC Frame)
