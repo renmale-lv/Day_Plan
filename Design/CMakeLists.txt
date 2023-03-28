@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.5)
 project(Design)
 
 add_library(Design STATIC
-    #侧边栏
-    SideBar.hpp SideBar.cpp
+    #标题栏
+    TitleBar.hpp TitleBar.cpp
 )
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)

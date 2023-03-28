@@ -20,18 +20,6 @@ public:
     ~Widget();
 
 private:
-    QLabel* _title_bar;
-    QVBoxLayout* _final_layout;
-    QPushButton* _quit_button;
-    QHBoxLayout* _title_layout;
-    QTabWidget* _tab_widget;
-
-    //测试函数
-    void test();
-protected:
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
 private slots:
-    void on_quit_button_clicked();
 };
 #endif // WIDGET_HPP

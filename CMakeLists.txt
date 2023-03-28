@@ -13,13 +13,16 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
+    main.cpp
 )
+
+FILE(GLOB RCC_FILES "./*.qrc")
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Day_Plan
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        ${RCC_FILES}
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Day_Plan APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -29,12 +32,14 @@ else()
     if(ANDROID)
         add_library(Day_Plan SHARED
             ${PROJECT_SOURCES}
+            ${RCC_FILES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         add_executable(Day_Plan
             ${PROJECT_SOURCES}
+            ${RCC_FILES}
         )
     endif()
 endif()
