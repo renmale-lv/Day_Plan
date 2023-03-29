@@ -2,6 +2,11 @@
 #define TITLEBAR_HPP
 
 #include <QWidget>
+#include <QLabel>
+#include <QPushButton>
+#include <QHBoxLayout>
+#include <QPixmap>
+#include <QStyle>
 
 class TitleBar : public QWidget
 {
@@ -9,6 +14,14 @@ class TitleBar : public QWidget
 public:
     explicit TitleBar(QWidget *parent = nullptr);
 
+    QPushButton* _quit_button;
+    QPushButton* _mmin_button;
+    QPushButton* _mmax_button;
+private:
+    QLabel* _logo;
+    QHBoxLayout* _final_layout;
+
+private slots:
 signals:
 
 };

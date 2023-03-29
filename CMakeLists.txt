@@ -65,5 +65,5 @@ endif()
 add_subdirectory(Frame)
 add_subdirectory(Design)
 
-target_link_libraries(Day_Plan PRIVATE Frame)
-target_include_directories(Day_Plan PUBLIC Frame)
+target_link_libraries(Day_Plan PRIVATE Frame Design)
+target_include_directories(Day_Plan PUBLIC Frame Design)

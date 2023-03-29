@@ -7,4 +7,7 @@ add_library(Frame STATIC
 )
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
-target_link_libraries(Frame Qt5::Widgets)
+target_link_libraries(Frame Qt5::Widgets Design)
+
+
+target_include_directories(Frame PUBLIC ../Design)
