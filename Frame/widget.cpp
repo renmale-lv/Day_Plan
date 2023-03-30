@@ -11,11 +11,12 @@ Widget::Widget(QWidget *parent)
     _title_bar=new TitleBar(this);
     _title_bar->installEventFilter(this);
 
-    QWidget* test=new QWidget(this);
-    test->installEventFilter(this);
+    _buttom_bar=new ButtomBar(this);
+    _buttom_bar->installEventFilter(this);
 
     _final_layout->addWidget(_title_bar);
-    _final_layout->addWidget(test);
+    _final_layout->addStretch();
+    _final_layout->addWidget(_buttom_bar);
     _final_layout->setMargin(0);
     this->setLayout(_final_layout);
 

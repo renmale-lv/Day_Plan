@@ -16,6 +16,7 @@
 
 #include "TitleBar.hpp"
 #include "Windows.h"
+#include "ButtomBar.hpp"
 
 class Widget : public QWidget
 {
@@ -27,6 +28,8 @@ public:
 private:
     //标题栏
     TitleBar* _title_bar;
+    //底栏
+    ButtomBar* _buttom_bar;
     //布局
     QVBoxLayout* _final_layout;
 private slots:
