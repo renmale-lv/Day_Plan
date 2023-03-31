@@ -4,6 +4,10 @@ TitleBar::TitleBar(QWidget *parent)
     : QWidget{parent}
 {
     this->setFixedHeight(30);
+    QPalette pal(this->palette());
+    pal.setColor(QPalette::Background,QColor(203,241,245));
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
 
     _quit_button=new QPushButton(this);
     _mmin_button=new QPushButton(this);

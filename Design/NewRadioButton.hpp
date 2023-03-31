@@ -6,6 +6,7 @@
 #include <QString>
 #include <QPainter>
 #include <QPen>
+#include <QBrush>
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QPixmap>

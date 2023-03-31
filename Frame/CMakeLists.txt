@@ -4,6 +4,8 @@ project(Frame)
 
 add_library(Frame STATIC
     widget.hpp widget.cpp
+    MainPage.hpp MainPage.cpp
+    OverViewWidget.hpp OverViewWidget.cpp
 )
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)

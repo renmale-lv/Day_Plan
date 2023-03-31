@@ -7,6 +7,8 @@
 #include <QHBoxLayout>
 #include <QPixmap>
 #include <QStyle>
+#include <QPalette>
+#include <QColor>
 
 class TitleBar : public QWidget
 {

@@ -14,11 +14,13 @@ public:
     explicit ButtomBar(QWidget *parent = nullptr);
 private:
     QHBoxLayout* _final_layout;
-    NewRadioButton* test;
-    NewRadioButton* test1;
+    NewRadioButton* _home_button;
+    NewRadioButton* _overview_button;
     QButtonGroup* _button_group;
 signals:
-
+    void button_toggled(int);
+private slots:
+    void on_button_clicked(int,bool);
 };
 
 #endif // BUTTOMBAR_HPP

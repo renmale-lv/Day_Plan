@@ -14,28 +14,49 @@ Widget::Widget(QWidget *parent)
     _buttom_bar=new ButtomBar(this);
     _buttom_bar->installEventFilter(this);
 
+    _tab_widget=new QTabWidget(this);
+    _tab_widget->installEventFilter(this);
+    _tab_widget->tabBar()->hide();
+
+    _home_page=new MainPage(this);
+    _overview_page=new OverViewWidget(this);
+
+    _tab_widget->addTab(_home_page,"home");
+    _tab_widget->addTab(_overview_page,"overview");
+
     _final_layout->addWidget(_title_bar);
-    _final_layout->addStretch();
+    _final_layout->addWidget(_tab_widget);
     _final_layout->addWidget(_buttom_bar);
     _final_layout->setMargin(0);
+    _final_layout->setSpacing(0);
     this->setLayout(_final_layout);
 
+    connect(_buttom_bar,&ButtomBar::button_toggled,_tab_widget,&QTabWidget::setCurrentIndex);
 }
 
 static QPoint last(100,200);
+static bool _move_flag=false;
 void Widget::mousePressEvent(QMouseEvent *event){
+    _move_flag=true;
     last=event->globalPos();
 }
 
 void Widget::mouseMoveEvent(QMouseEvent *event){
+    if(!_move_flag) return;
     int dx=event->globalX()-last.x();
     int dy=event->globalY()-last.y();
     last=event->globalPos();
     this->move(this->x()+dx,this->y()+dy);
 }
 
+void Widget::mouseReleaseEvent(QMouseEvent *event){
+    Q_UNUSED(event);
+    _move_flag=false;
+}
+
 bool Widget::eventFilter(QObject *watched, QEvent *event){
-    if(watched == _title_bar && (event->type()==QEvent::MouseButtonPress || event->type()==QEvent::MouseMove)) return false;
+    Q_UNUSED(event);
+    if(watched == _title_bar) return false;
     return true;
 }
 
