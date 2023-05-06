@@ -3,11 +3,12 @@
 #include <QQmlContext>
 
 #include "CursorPosProvider.hpp"
+#include "FramelessWindow.hpp"
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
     QGuiApplication app(argc, argv);
+    qmlRegisterType<FramelessWindow>("FramelessWindow", 1, 0, "FramelessWindow");
 
     QQmlApplicationEngine engine;
     CursorPosProvider mousePosProvider;

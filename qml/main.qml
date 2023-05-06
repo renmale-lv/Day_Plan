@@ -3,12 +3,13 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import FramelessWindow
+
 import "ResizeItem"
 
-ApplicationWindow {
+FramelessWindow {
     id: mainWindow;
     color: "#2C3333";
-    opacity: 1;
     //窗口大小
     width: 1050;
     height: 700;
@@ -16,29 +17,33 @@ ApplicationWindow {
     minimumHeight: 700;
 
     //设置无边框
-    flags: Qt.Window | Qt.FramelessWindowHint;
+//    flags: Qt.Window | Qt.FramelessWindowHint;
     visible: true;
 
-    //实现鼠标拖动
-    MouseArea{
-        anchors.fill: parent;
-        acceptedButtons: Qt.LeftButton;
-        property point lastPosition: "0,0";
-        //鼠标按下
-        onPressed: function(mouse){
-            lastPosition=Qt.point(mouse.x,mouse.y);
-        }
-        //鼠标移动
-        onPositionChanged: function(mouse){
-            mainWindow.x = mousePosition.cursorPos().x - lastPosition.x;
-            mainWindow.y = mousePosition.cursorPos().y - lastPosition.y;
-            console.log(mainWindow.x,mainWindow.y);
-        }
-    }
-    ResizeItem{
-        anchors.fill: parent
-        focus: true
-    }
+//    ResizeItem{
+//        id: resizeItem;
+//        borderWidth: 4;
+//        visible: Qt.platform.os !== "windows";
+//        anchors.fill: parent;
+//        enabled: visible;
+//        control: mainWindow;
+//        z:1000;
+//    }
+//    //实现鼠标拖动
+//    MouseArea{
+//        anchors.fill: parent;
+//        acceptedButtons: Qt.LeftButton;
+//        property point lastPosition: "0,0";
+//        //鼠标按下
+//        onPressed: function(mouse){
+//            lastPosition=Qt.point(mouse.x,mouse.y);
+//        }
+//        //鼠标移动
+//        onPositionChanged: function(mouse){
+//            mainWindow.x = mousePosition.cursorPos().x - lastPosition.x;
+//            mainWindow.y = mousePosition.cursorPos().y - lastPosition.y;
+//        }
+//    }
 
     //侧边栏
     Rectangle{
@@ -68,23 +73,7 @@ ApplicationWindow {
                     radius: 7;
                     color: quitButton.hovered ? "#e94d56" : Qt.lighter("#e94d56");
                 }
-                onClicked: {quitAniamation.start();quitTimer.start();}
-                Timer{
-                    id: quitTimer;
-                    interval: 200;
-                    repeat: false;
-                    running: false;
-                    triggeredOnStart: false;
-                    onTriggered: {Qt.quit();}
-                }
-                NumberAnimation{
-                    id: quitAniamation;
-                    target: mainWindow;
-                    properties: "width";
-                    from: mainWindow.width;
-                    to: 0;
-                    duration: 200;
-                }
+                onClicked: {Qt.quit();}
             }
             T.Button{
                 id: miniButton;

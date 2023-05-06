@@ -13,6 +13,7 @@ find_package(Qt6 COMPONENTS QuickControls2 REQUIRED)
 qt_add_executable(appDay_Plan
     main.cpp
     CursorPosProvider.hpp
+    FramelessWindow.hpp FramelessWindow.cpp
     readme.md
     qml.qrc
 )
