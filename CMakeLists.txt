@@ -3,6 +3,8 @@
 project(Day_Plan VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
@@ -12,12 +14,7 @@ qt_add_executable(appDay_Plan
     main.cpp
     CursorPosProvider.hpp
     readme.md
-)
-
-qt_add_qml_module(appDay_Plan
-    URI Day_Plan
-    VERSION 1.0
-    QML_FILES main.qml ResizeItem.qml
+    qml.qrc
 )
 
 set_target_properties(appDay_Plan PROPERTIES

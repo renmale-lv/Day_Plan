@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import QtQuick.Templates as T
+import "ResizeItem"
 
 ApplicationWindow {
     id: mainWindow;
