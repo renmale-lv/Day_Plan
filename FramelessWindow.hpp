@@ -3,6 +3,12 @@
 
 #include <QQuickWindow>
 
+/**
+ * @brief 无边框窗口类，实现移动和拖动改变窗口大小
+ *  借鉴@mengps大佬的代码
+ *  地址：https://github.com/mengps/QmlControls
+ */
+
 class FramelessWindow : public QQuickWindow
 {
     Q_OBJECT

@@ -5,7 +5,6 @@ FramelessWindow::FramelessWindow(QWindow *parent)
 
 {
    setFlags(flags() | Qt::Window | Qt::FramelessWindowHint);
-
    //在这里改变默认移动区域
    //只有鼠标在移动区域内，才能移动窗口
    connect(this,&QQuickWindow::widthChanged,this,[this](int arg){
@@ -14,6 +13,7 @@ FramelessWindow::FramelessWindow(QWindow *parent)
    connect(this,&QQuickWindow::heightChanged,this,[this](int arg){
        m_moveArea.setHeight(arg-16);
    });
+
 }
 
 bool FramelessWindow::movable() const
@@ -225,3 +225,4 @@ void FramelessWindow::setCursorIcon()
         break;
     }
 }
+
