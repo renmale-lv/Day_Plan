@@ -1,54 +1,39 @@
 import QtQuick
 import QtQuick.Controls
 
-Item {
+//自定义单选按钮
+RadioButton{
     id: root;
-    property int index: 0;
-    property bool checked: false;
-    property color color: "#395B64";
+    implicitHeight: 40;
+    implicitWidth: 186;
+    property color ncolor: "#395B64";
+    indicator: null;
 
-    height: 40;
-    width: 186;
-
-    onCheckedChanged: {
-        if(checked){
-            button.color=root.color
-        }else{
-            button.color=Qt.lighter(root.color,1.7);
-        }
-    }
-
-    Rectangle{
+    background: Rectangle{
         id: button;
-        anchors.fill: parent;
+        anchors.fill: root;
         radius: 10;
+        color: Qt.lighter(root.ncolor,1.7);
 
         MouseArea{
-            id: mousearea;
             anchors.fill: parent;
             acceptedButtons: Qt.LeftButton;
             hoverEnabled: true;
-            propagateComposedEvents: fasle;
-            onClicked: {
-                root.checked=true;
-                return;
-            }
             onEntered: {
                 if(root.checked) return;
-                button.color=Qt.lighter(root.color,1.3);
+                button.color=Qt.lighter(root.ncolor,1.3);
             }
             onExited: {
                 if(root.checked) return;
-                button.color=Qt.lighter(root.color,1.7);
+                button.color=Qt.lighter(root.ncolor,1.7);
             }
-            onPressed: {
-                if(root.checked) return;
-                button.color=root.color;
-            }
-
-
         }
-        color: Qt.lighter(root.color,1.7);
-
+    }
+    onCheckedChanged: {
+        if(checked){
+            button.color=Qt.lighter(root.ncolor,1);
+        }else{
+            button.color=Qt.lighter(root.ncolor,1.7);
+        }
     }
 }

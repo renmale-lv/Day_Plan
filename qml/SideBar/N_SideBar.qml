@@ -60,8 +60,9 @@ Item {
                 onClicked: {mainWindow.visibility=Window.Minimized;}
             }
         }
-
+        ButtonGroup{buttons: column.children;}
         Column{
+            id: column;
             anchors.fill: parent;
             anchors.topMargin: 40;
             anchors.leftMargin: 7;
@@ -69,13 +70,14 @@ Item {
             spacing: 10;
 
             N_CheckButton{
-                color: "#395B64";
+                checked: true;
+                text: "DAY TODO";
             }
             N_CheckButton{
-
+                text: "OVERVIEW"
             }
             N_CheckButton{
-
+                text: "MUSIC";
             }
         }
     }
