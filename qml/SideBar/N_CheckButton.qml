@@ -8,6 +8,14 @@ RadioButton{
     implicitWidth: 186;
     property color ncolor: "#395B64";
     indicator: null;
+    property int index;
+
+    contentItem: Text {
+        text: root.text;
+        verticalAlignment: Text.AlignVCenter;
+        leftPadding: 15;
+        font.family: "Bitstream Charter";
+    }
 
     background: Rectangle{
         id: button;

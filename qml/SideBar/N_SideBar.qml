@@ -60,7 +60,13 @@ Item {
                 onClicked: {mainWindow.visibility=Window.Minimized;}
             }
         }
-        ButtonGroup{buttons: column.children;}
+        ButtonGroup{
+            buttons: column.children;
+            exclusive: true;
+            onClicked: function(button){
+                root.selectindex=button.index;
+            }
+        }
         Column{
             id: column;
             anchors.fill: parent;
@@ -72,12 +78,15 @@ Item {
             N_CheckButton{
                 checked: true;
                 text: "DAY TODO";
+                index: 1;
             }
             N_CheckButton{
                 text: "OVERVIEW"
+                index: 2;
             }
             N_CheckButton{
                 text: "MUSIC";
+                index: 3;
             }
         }
     }

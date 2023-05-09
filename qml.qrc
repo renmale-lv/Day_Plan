@@ -3,5 +3,9 @@
         <file>qml/main.qml</file>
         <file>qml/SideBar/N_SideBar.qml</file>
         <file>qml/SideBar/N_CheckButton.qml</file>
+        <file>qml/BottomBar/N_BottomBar.qml</file>
+        <file>qml/DayTodoWindow/N_DayTodoWindow.qml</file>
+        <file>qml/OverviewWindow/N_OverviewWindow.qml</file>
+        <file>qml/MusicWindow/N_MusicWindow.qml</file>
     </qresource>
 </RCC>

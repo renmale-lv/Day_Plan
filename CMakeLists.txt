@@ -10,9 +10,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 find_package(Qt6 COMPONENTS QuickControls2 REQUIRED)
 
+
+set(ALL_SOURCE)
+set(ALL_HEAD)
+file(GLOB ALL_SOURCE ./src/*.cpp)
+file(GLOB ALL_HEAD ./src/*.hpp)
+
 qt_add_executable(appDay_Plan
-    main.cpp
-    FramelessWindow.hpp FramelessWindow.cpp
+    ${ALL_SOURCE}
+    ${ALL_HEAD}
     readme.md
     qml.qrc
 )
