@@ -9,12 +9,29 @@ RadioButton{
     property color ncolor: "#395B64";
     indicator: null;
     property int index;
+    property string iconsource;
 
-    contentItem: Text {
-        text: root.text;
-        verticalAlignment: Text.AlignVCenter;
-        leftPadding: 15;
-        font.family: "Bitstream Charter";
+    contentItem: Item{
+        anchors.fill: parent;
+        IconImage {
+            id: icon;
+            anchors.top: parent.top;
+            anchors.bottom: parent.bottom;
+            anchors.left: parent.left;
+            anchors.topMargin: 10;
+            anchors.bottomMargin: 10;
+            anchors.leftMargin: 15;
+            source: root.iconsource;
+        }
+        Text {
+            anchors.top: parent.top;
+            anchors.bottom: parent.bottom;
+            anchors.left: icon.right;
+            text: root.text;
+            verticalAlignment: Text.AlignVCenter;
+            leftPadding: 5;
+            font.family: "Bitstream Charter";
+        }
     }
 
     background: Rectangle{

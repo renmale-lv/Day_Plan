@@ -79,14 +79,17 @@ Item {
                 checked: true;
                 text: "DAY TODO";
                 index: 1;
+                iconsource: "qrc:/image/DayTodo.png";
             }
             N_CheckButton{
                 text: "OVERVIEW"
                 index: 2;
+                iconsource: "qrc:/image/Overview.png";
             }
             N_CheckButton{
                 text: "MUSIC";
                 index: 3;
+                iconsource: "qrc:/image/Music.png";
             }
         }
     }
