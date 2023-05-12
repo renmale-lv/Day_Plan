@@ -11,6 +11,8 @@ import "BottomBar"
 import "DayTodoWindow"
 import "OverviewWindow"
 import "MusicWindow"
+import "StatisticsWindow"
+import "SettingWindow"
 
 FramelessWindow {
     id: mainWindow;
@@ -39,6 +41,8 @@ FramelessWindow {
             case 1: myloader.sourceComponent=dayTodoPage; break;
             case 2: myloader.sourceComponent=overviewPage; break;
             case 3: myloader.sourceComponent=musicPage; break;
+            case 4: myloader.sourceComponent=statisticsPage; break;
+            case 5: myloader.sourceComponent=settingPage; break;
             }
         }
     }
@@ -81,7 +85,18 @@ FramelessWindow {
         id: musicPage;
         N_MusicWindow{
             anchors.fill: parent;
-
+        }
+    }
+    Component{
+        id: statisticsPage;
+        N_StatisticsWindow{
+            anchors.fill: parent;
+        }
+    }
+    Component{
+        id: settingPage;
+        N_SettingWindow{
+            anchors.fill: parent;
         }
     }
 }

@@ -91,6 +91,16 @@ Item {
                 index: 3;
                 iconsource: "qrc:/image/Music.png";
             }
+            N_CheckButton{
+                text: "Statistics";
+                index: 4;
+                iconsource: "qrc:/image/Statistics.png";
+            }
+            N_CheckButton{
+                text: "Setting";
+                index: 5;
+                iconsource: "qrc:/image/Setting.png";
+            }
         }
     }
 }
