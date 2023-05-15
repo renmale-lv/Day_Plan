@@ -1,5 +1,7 @@
 import QtQuick 2.15
 
+import "../Base"
+
 Item {
     Rectangle{
         id: calendar;
@@ -33,5 +35,10 @@ Item {
         anchors.topMargin: 7;
         radius: 20;
         color: "#DDDDDD";
+
+        B_Calendar{
+            x:100;
+            y:20;
+        }
     }
 }

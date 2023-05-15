@@ -15,5 +15,6 @@
         <file>image/Statistics.png</file>
         <file>qml/SettingWindow/N_SettingWindow.qml</file>
         <file>qml/StatisticsWindow/N_StatisticsWindow.qml</file>
+        <file>qml/Base/B_Calendar.qml</file>
     </qresource>
 </RCC>
