@@ -3,20 +3,14 @@ import QtQuick 2.15
 import "../Base"
 
 Item {
-    Rectangle{
+    N_DateSelector{
         id: calendar;
         anchors.top: parent.top;
         anchors.left: parent.left;
         implicitHeight: 40;
-        implicitWidth: 500;
+        implicitWidth: 450;
         color: "#DDDDDD"
         radius: 20;
-        Text{
-            anchors.fill: parent;
-            text: "DayTodo";
-            verticalAlignment: Qt.AlignVCenter;
-            horizontalAlignment: Qt.AlignHCenter;
-        }
     }
     Rectangle{
         anchors.left: calendar.right;
@@ -26,6 +20,12 @@ Item {
         implicitHeight: 40;
         radius: 20;
         color: "#DDDDDD";
+        Text{
+            anchors.fill: parent;
+            text: "DayTodo";
+            verticalAlignment: Qt.AlignVCenter;
+            horizontalAlignment: Qt.AlignHCenter;
+        }
     }
     Rectangle{
         anchors.top: calendar.bottom;

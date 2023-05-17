@@ -16,5 +16,7 @@
         <file>qml/SettingWindow/N_SettingWindow.qml</file>
         <file>qml/StatisticsWindow/N_StatisticsWindow.qml</file>
         <file>qml/Base/B_Calendar.qml</file>
+        <file>qml/Base/B_DateList.qml</file>
+        <file>qml/DayTodoWindow/N_DateSelector.qml</file>
     </qresource>
 </RCC>
