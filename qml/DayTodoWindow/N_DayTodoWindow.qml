@@ -11,8 +11,10 @@ Item {
         implicitWidth: 450;
         color: "#DDDDDD"
         radius: 20;
+        z: 100;
     }
     Rectangle{
+        focus: true;
         anchors.left: calendar.right;
         anchors.right: parent.right;
         anchors.top: parent.top;
@@ -35,10 +37,5 @@ Item {
         anchors.topMargin: 7;
         radius: 20;
         color: "#DDDDDD";
-
-        B_Calendar{
-            x:100;
-            y:20;
-        }
     }
 }

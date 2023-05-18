@@ -8,11 +8,11 @@ Rectangle {
         anchors.top: parent.top;
         anchors.bottom: parent.bottom;
         anchors.left: parent.left;
-        anchors.right: calendar.left;
+        anchors.right: calendar_button.left;
     }
 
     T.Button{
-        id: calendar;
+        id: calendar_button;
         anchors.top: parent.top;
         anchors.bottom: parent.bottom;
         anchors.right: parent.right;
@@ -28,5 +28,13 @@ Rectangle {
                 text: "5月17号";
             }
         }
+    }
+
+    B_Calendar{
+        id: calendar;
+        x: parent.width-width;
+        y: parent.height+5;
+        z: 1000;
+        visible: (calendar_button.activeFocus | activeFocus) ? true : false;
     }
 }
