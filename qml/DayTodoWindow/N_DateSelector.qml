@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Templates as T
 import "../Base"
 
@@ -37,6 +37,5 @@ Rectangle {
         id: calendar;
         x: parent.width-width;
         y: parent.height+5;
-        z: 1000;
     }
 }

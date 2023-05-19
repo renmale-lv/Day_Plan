@@ -37,4 +37,3 @@ target_link_libraries(appDay_Plan
 install(TARGETS appDay_Plan
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
-include(CPack)

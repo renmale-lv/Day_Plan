@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Controls
 
 //自定义单选按钮
@@ -34,9 +34,8 @@ RadioButton{
         }
     }
 
-    background: Rectangle{
+    background: Rectangle {
         id: button;
-        anchors.fill: root;
         radius: 10;
         color: Qt.lighter(root.ncolor,1.7);
 
