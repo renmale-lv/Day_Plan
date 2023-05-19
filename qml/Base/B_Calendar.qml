@@ -1,13 +1,18 @@
 import QtQuick
+import QtQuick.Controls
+import QtQml
+import QtQuick.Layouts
 
-Rectangle{
-    width: 320;
-    height: 320;
-    radius: 20;
-
+Popup{
+    id: root;
+    width: 340;
+    height: 340;
+    background: Rectangle{
+        radius: 20;
+    }
 
     GridView{
-        id: root;
+        id: grid;
         anchors.fill: parent;
         anchors.margins: 10;
         cellHeight: 2*height/13;
@@ -19,13 +24,13 @@ Rectangle{
         Component{
             id: weekStatus;
             Item{
-                width: root.width;
-                height: root.height/13;
+                width: grid.width;
+                height: grid.height/13;
                 Repeater{
                     model: ["日", "一", "二", "三", "四", "五", "六"];
                     Item {
                         x: index*width;
-                        width: root.cellWidth;
+                        width: grid.cellWidth;
                         height: weekStatus.height;
 
                         Text{
@@ -38,16 +43,59 @@ Rectangle{
                 }
             }
         }
-
         Component{
             id: dateGridDeldgate
             Rectangle{
                 id: cellContent;
-                width: root.cellWidth;
-                height: root.cellHeight;
-                border.width: 1;
+                width: grid.cellWidth;
+                height: grid.cellHeight;
+                color: "transparent";
+                Column{
+                    anchors.centerIn: parent;
+                    spacing: 10;
 
+                    Item{
+                        width: cellContent.width;
+                        height: number.font.pixelSize
+                        Text{
+                            id: number;
+                            anchors.horizontalCenter: parent.horizontalCenter;
+                            anchors.bottom: parent.bottom;
+                            font.pixelSize: 20;
+                            font.bold: true;
+                            text: "13";
+                        }
+                    }
+                    Item{
+                        width: cellContent.width; height: festival.font.pixelSize;
+                        Text{
+                            id: festival;
+                            anchors.horizontalCenter: parent.horizontalCenter;
+                            anchors.bottom: parent.bottom;
+                            font.pixelSize: 10;
+                            text: "廿一";
+                        }
+                    }
+                }
+                MouseArea{
+                    anchors.fill: parent;
+                    onClicked: {
+                        console.log(timehelper.month);
+                        console.log(timehelper.year);
+                        console.log(new Date().getDay());
+                    }
+                }
             }
         }
     }
+    Item{
+        id: timehelper;
+        property int month: new Date().getMonth()+1;
+        property int year: new Date().getFullYear();
+
+//        function getDate(index, y, m){
+//            new Date().getDay()
+//        }
+    }
 }
+

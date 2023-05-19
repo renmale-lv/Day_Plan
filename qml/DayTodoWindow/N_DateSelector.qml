@@ -28,6 +28,9 @@ Rectangle {
                 text: "5月17号";
             }
         }
+        onClicked: {
+            calendar.visible=true;
+        }
     }
 
     B_Calendar{
@@ -35,6 +38,5 @@ Rectangle {
         x: parent.width-width;
         y: parent.height+5;
         z: 1000;
-        visible: (calendar_button.activeFocus | activeFocus) ? true : false;
     }
 }

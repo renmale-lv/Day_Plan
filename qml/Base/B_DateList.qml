@@ -21,12 +21,10 @@ Item{
                     text: sub.text;
                 }
             }
-
         }
         Repeater{
             model: 7;
             T.Button{
-                text: "?";
                 width: 30;
                 height: 30;
                 visible: true;
