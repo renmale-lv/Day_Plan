@@ -10,7 +10,6 @@ Popup{
     background: Rectangle{
         radius: 20;
     }
-//    closePolicy: Popup.NoAutoClose;
     GridView{
         id: grid;
         anchors.fill: parent;
@@ -64,6 +63,7 @@ Popup{
                             font.pixelSize: 20;
                             font.bold: true;
                             text: timehelper.getDate(index,timehelper.year,timehelper.month);
+                            color: timehelper.getColor(index,timehelper.year,timehelper.month);
                         }
                     }
                     Item{
@@ -102,6 +102,16 @@ Popup{
             else if(num>days) return num-days;
             else return num;
         }
+        function getColor(index, y, m){
+            var days=getDaysInMonth(y,m);
+            var start=new Date(y,m-1,1,0,0,0).getDay();
+            if(start===7) start=0;
+            var num=index-start+1;
+            if(num<1) return "#e0e0e0";
+            else if(num>days) return "#e0e0e0";
+            else return "#000000";
+        }
+
         //获取这个月有多少天
         function getDaysInMonth(y,m){
             if(m<1){

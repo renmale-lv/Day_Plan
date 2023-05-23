@@ -1,36 +1,10 @@
-#include "FramelessWindow.hpp"
+﻿#include "FramelessWindow.hpp"
 
 FramelessWindow::FramelessWindow(QWindow *parent)
     : QQuickWindow (parent)
 
 {
    setFlags(flags() | Qt::Window | Qt::FramelessWindowHint);
-}
-
-bool FramelessWindow::movable() const
-{
-    return m_movable;
-}
-
-void FramelessWindow::setMovable(bool arg)
-{
-    if (m_movable != arg) {
-        m_movable = arg;
-        emit movableChanged();
-    }
-}
-
-bool FramelessWindow::resizable() const
-{
-    return m_resizable;
-}
-
-void FramelessWindow::setResizable(bool arg)
-{
-    if (m_resizable != arg) {
-        m_resizable = arg;
-        emit resizableChanged();
-    }
 }
 
 void FramelessWindow::mousePressEvent(QMouseEvent *event)
@@ -40,14 +14,14 @@ void FramelessWindow::mousePressEvent(QMouseEvent *event)
     m_oldSize = size();
 
     event->ignore();
-
+    m_movable=true;
     QQuickWindow::mousePressEvent(event);
 }
 
 void FramelessWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     m_oldPos = position();
-
+    m_movable=false;
     QQuickWindow::mouseReleaseEvent(event);
 }
 
@@ -74,13 +48,13 @@ void FramelessWindow::mouseMoveEvent(QMouseEvent *event)
             //单独处理移动区域，这样可以更快
             //但是需要注意，z序更高的MouseArea仍会触发
             setPosition(m_oldPos - m_startPos + event->globalPos());
-        } else if (m_resizable && m_currentArea != Move){
+        } else if (m_currentArea != Move){
             setWindowGeometry(event->globalPos());
         }
     } else {
         QPoint pos = event->pos();
         m_currentArea = getArea(pos);
-        if (m_resizable) setCursorIcon();
+        setCursorIcon();
     }
 
     QQuickWindow::mouseMoveEvent(event);
@@ -216,4 +190,3 @@ void FramelessWindow::setCursorIcon()
         break;
     }
 }
-

@@ -1,19 +1,11 @@
-#ifndef FRAMELESSWINDOW_HPP
+﻿#ifndef FRAMELESSWINDOW_HPP
 #define FRAMELESSWINDOW_HPP
 
 #include <QQuickWindow>
 
-/**
- * @brief 无边框窗口类，实现移动和拖动改变窗口大小
- *  借鉴@mengps大佬的代码
- *  地址：https://github.com/mengps/QmlControls
- */
-
 class FramelessWindow : public QQuickWindow
 {
     Q_OBJECT
-    Q_PROPERTY(bool movable READ movable WRITE setMovable NOTIFY movableChanged)
-    Q_PROPERTY(bool resizable READ resizable WRITE setResizable NOTIFY resizableChanged)
 
     enum MouseArea {
         TopLeft = 1,
@@ -30,10 +22,6 @@ class FramelessWindow : public QQuickWindow
 
 public:
     explicit FramelessWindow(QWindow *parent=nullptr);
-    bool movable() const;
-    void setMovable(bool arg);
-    bool resizable() const;
-    void setResizable(bool arg);
 
 signals:
     void movableChanged();
@@ -50,7 +38,6 @@ private:
     void setWindowGeometry(const QPoint &pos);
     void setCursorIcon();
     bool m_movable = true;
-    bool m_resizable = true;
     MouseArea m_currentArea = Move;
     QPoint m_startPos;
     QPoint m_oldPos;
