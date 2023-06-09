@@ -2,19 +2,152 @@
 import QtQuick.Controls
 import QtQml
 import QtQuick.Layouts
+import QtQuick.Templates as T
 
 import LunarDateHelper
 
 Popup{
     id: root;
     width: 340;
-    height: 340;
+    height: 380;
     background: Rectangle{
         radius: 20;
     }
+    Item{
+        id: yearandmonth;
+        property int month: new Date().getMonth()+1;
+        property int year: new Date().getFullYear();
+        anchors.top: parent.top;
+        anchors.left: parent.left;
+        anchors.right: parent.right;
+        height: 40;
+
+        T.Button{
+            id: lastyearbutton;
+            anchors.left: parent.left;
+            anchors.leftMargin: 15;
+            anchors.top: parent.top;
+            anchors.bottom: parent.bottom;
+            height: 40;
+            width: 40;
+            enabled: parent.year===1990 ? false : true;
+            background: Rectangle{
+                radius: 10;
+                Text{
+                    anchors.centerIn: parent;
+                    text: "<<";
+                    color: parent.enabled ? "#000000" : "#a0a0a0";
+                }
+                color: parent.pressed ? "#e0e0e0" : (parent.hovered ? "#f0f0f0" : "transparent");
+            }
+            onClicked: {
+                parent.year-=1;
+            }
+        }
+        T.Button{
+            id: lastmonthbutton;
+            anchors.left: lastyearbutton.right;
+            anchors.leftMargin: 5;
+            anchors.top: parent.top;
+            anchors.bottom: parent.bottom;
+            height: 40;
+            width: 40;
+            enabled: (parent.year===1990 && parent.month===1) ? false : true;
+            background: Rectangle{
+                radius: 10;
+                Text{
+                    anchors.centerIn: parent;
+                    text: "<";
+                    color: "#000000";
+                }
+                color: parent.pressed ? "#e0e0e0" : (parent.hovered ? "#f0f0f0" : "transparent");
+            }
+            onClicked: {
+                if(parent.month===1){
+                    parent.year-=1;
+                    parent.month=12;
+                }
+                else parent.month-=1;
+            }
+        }
+        T.Button{
+            id: nextmonthbutton;
+            anchors.right: nextyearbutton.left;
+            anchors.rightMargin: 5;
+            anchors.top: parent.top;
+            anchors.bottom: parent.bottom;
+            height: 40;
+            width: 40;
+            enabled: (parent.year===2090 && parent.month===12) ? false : true;
+            background: Rectangle{
+                radius: 10;
+                Text{
+                    anchors.centerIn: parent;
+                    text: ">";
+                    color: "#000000";
+                }
+                color: parent.pressed ? "#e0e0e0" : (parent.hovered ? "#f0f0f0" : "transparent");
+            }
+            onClicked: {
+                if(parent.month===12){
+                    parent.year+=1;
+                    parent.month=1;
+                }
+                else parent.month+=1;
+            }
+        }
+        T.Button{
+            id: nextyearbutton;
+            anchors.right: parent.right;
+            anchors.rightMargin: 15;
+            anchors.top: parent.top;
+            anchors.bottom: parent.bottom;
+            height: 40;
+            width: 40;
+            enabled: (parent.year===2090) ? false : true;
+            background: Rectangle{
+                radius: 10;
+                Text{
+                    anchors.centerIn: parent;
+                    text: ">>";
+                    color: "#000000";
+                }
+                color: parent.pressed ? "#e0e0e0" : (parent.hovered ? "#f0f0f0" : "transparent");
+            }
+            onClicked: {
+                parent.year+=1;
+            }
+        }
+        T.Button{
+            id: resetbutton;
+            anchors.left: lastmonthbutton.right;
+            anchors.right: nextmonthbutton.left;
+            anchors.top: parent.top;
+            anchors.bottom: parent.bottom;
+            anchors.leftMargin: 5;
+            anchors.rightMargin: 5;
+            background: Rectangle{
+                radius: 10;
+                Text{
+                    anchors.centerIn: parent;
+                    text: yearandmonth.year+" 年 "+yearandmonth.month+" 月";
+                    color: "#000000";
+                }
+                color: parent.pressed ? "#e0e0e0" : (parent.hovered ? "#f0f0f0" : "transparent");
+            }
+            onClicked: {
+                yearandmonth.year=new Date().getFullYear();
+                yearandmonth.month=new Date().getMonth()+1;
+            }
+        }
+    }
+
     GridView{
         id: grid;
-        anchors.fill: parent;
+        anchors.top: yearandmonth.bottom;
+        anchors.left: parent.left;
+        anchors.right: parent.right;
+        anchors.bottom: parent.bottom;
         anchors.margins: 10;
         cellHeight: 2*height/13;
         cellWidth: width/7;
@@ -92,8 +225,8 @@ Popup{
     }
     Item{
         id: timehelper;
-        property int month: new Date().getMonth()+1;
-        property int year: new Date().getFullYear();
+        property int month: yearandmonth.month;
+        property int year: yearandmonth.year;
 
         function getDate(index, y, m){
             var days=getDaysInMonth(y,m);
