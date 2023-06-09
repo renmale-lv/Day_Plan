@@ -1,8 +1,8 @@
-﻿#ifndef LUANRDATEHELPER_HPP
-#define LUANRDATEHELPER_HPP
+﻿#ifndef LUNARDATEHELPER_HPP
+#define LUNARDATEHELPER_HPP
 
 /**
- * @brief The LuanrDateHelper class
+ * @brief The LunarDateHelper class
  * C++农历算法
  */
 
@@ -10,17 +10,20 @@
  #include <QString>
  #include <QDate>
 
-class LuanrDateHelper : public QObject
+class LunarDateHelper : public QObject
 {
     Q_OBJECT
 public:
-    explicit LuanrDateHelper(QObject *parent = nullptr);
+    explicit LunarDateHelper(QObject *parent = nullptr);
 //    Q_INVOKABLE QString GetLuanr(int year,int month,int day);
+    Q_INVOKABLE QString changeLuanrFromSolar(int year,int month,int day);
 private:
 //    QString GetLuanrFestival(QString Date);
 //    QString GetCalendarFestival(int month,int day);
-    QString ChangeLuanrFromSolar(int year,int month,int day);
     int DayOfYear(int year,int month,int day);
+    QString MonthName(int month);
+    QString DayName(int day);
+    void test();
 private:
     int normal_Day[12]={1,32,60,91,121,152,182,213,244,274,305,335};
     int leap_Day[12]={1,32,61,92,122,153,183,214,245,275,306,336};
@@ -87,6 +90,7 @@ private:
         0x0D5252,0x0DAA47,0x66B53B,0x056D4F,0x04AE45,
         0x4A4EB9,0x0A4D4C,0x0D1541,0x2D92B5 //2091-2099
     };
+    QString m_month;
 };
 
-#endif // LUANRDATEHELPER_HPP
+#endif // LUNARDATEHELPER_HPP

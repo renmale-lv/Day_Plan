@@ -3,11 +3,13 @@
 #include <QQmlContext>
 
 #include "FramelessWindow.hpp"
+#include "LunarDateHelper.hpp"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
     qmlRegisterType<FramelessWindow>("FramelessWindow", 1, 0, "FramelessWindow");
+    qmlRegisterType<LunarDateHelper>("LunarDateHelper", 1, 0, "LunarDateHelper");
 
     QQmlApplicationEngine engine;
     engine.addImportPath("qrc:/qml/ResizeItem");

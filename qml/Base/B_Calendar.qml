@@ -3,6 +3,8 @@ import QtQuick.Controls
 import QtQml
 import QtQuick.Layouts
 
+import LunarDateHelper
+
 Popup{
     id: root;
     width: 340;
@@ -73,7 +75,7 @@ Popup{
                             anchors.horizontalCenter: parent.horizontalCenter;
                             anchors.bottom: parent.bottom;
                             font.pixelSize: 10;
-                            text: "廿一";
+                            text: lunarDateHelper.changeLuanrFromSolar(timehelper.year,timehelper.month,number.text);
                         }
                     }
                 }
@@ -134,6 +136,10 @@ Popup{
                     else return 28;
             }
         }
+    }
+
+    LunarDateHelper{
+        id: lunarDateHelper;
     }
 }
 
