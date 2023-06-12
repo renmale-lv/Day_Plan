@@ -9,6 +9,7 @@
  #include <QObject>
  #include <QString>
  #include <QDate>
+ #include <QStringList>
 
 class LunarDateHelper : public QObject
 {
@@ -18,17 +19,24 @@ public:
 //    Q_INVOKABLE QString GetLuanr(int year,int month,int day);
     Q_INVOKABLE QString changeLuanrFromSolar(int year,int month,int day);
 private:
-//    QString GetLuanrFestival(QString Date);
-//    QString GetCalendarFestival(int month,int day);
     int DayOfYear(int year,int month,int day);
     QString MonthName(int month);
     QString DayName(int day);
+    QString Calendar_Festival(int month,int day);
+    QString Lunar_Festival(QString Date);
+
     void test();
 private:
     int normal_Day[12]={1,32,60,91,121,152,182,213,244,274,305,335};
     int leap_Day[12]={1,32,61,92,122,153,183,214,245,275,306,336};
     int begin_year=1901;
     int num_year=199;
+    QStringList lunar_festial;
+    /**
+     * 一共24位二进制
+     * 前四位表示闰月是地几个月，为0则表示今年五闰年
+     * 紧接着13个为每月天数，为1有30天，为0为29天
+    **/
     unsigned int lunar_Year[199]={
         0x04AE53,0x0A5748,0x5526BD,0x0D2650,0x0D9544,
         0x46AAB9,0x056A4D,0x09AD42,0x24AEB6,0x04AE4A, //1901-1910

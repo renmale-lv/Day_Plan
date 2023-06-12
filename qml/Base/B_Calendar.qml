@@ -9,14 +9,20 @@ import LunarDateHelper
 Popup{
     id: root;
     width: 340;
-    height: 380;
+    height: 360;
     background: Rectangle{
         radius: 20;
     }
+
+    property int m_year: new Date().getFullYear();
+    property int m_month: new Date().getMonth()+1;
+    property int m_day: new Date().getDate();
+
+
     Item{
         id: yearandmonth;
-        property int month: new Date().getMonth()+1;
-        property int year: new Date().getFullYear();
+        property int month: root.m_month;
+        property int year: root.m_year;
         anchors.top: parent.top;
         anchors.left: parent.left;
         anchors.right: parent.right;
@@ -104,7 +110,7 @@ Popup{
             anchors.bottom: parent.bottom;
             height: 40;
             width: 40;
-            enabled: (parent.year===2090) ? false : true;
+            enabled: (parent.year===2090 && parent.month===12) ? false : true;
             background: Rectangle{
                 radius: 10;
                 Text{
@@ -138,6 +144,9 @@ Popup{
             onClicked: {
                 yearandmonth.year=new Date().getFullYear();
                 yearandmonth.month=new Date().getMonth()+1;
+                root.m_year=new Date().getFullYear();
+                root.m_month=new Date().getMonth()+1;
+                root.m_day=new Date().getDate();
             }
         }
     }
@@ -153,6 +162,9 @@ Popup{
         cellWidth: width/7;
         header: weekStatus
         model: 42;
+        //禁止GridView拖动
+        interactive: false;
+
         delegate: dateGridDeldgate;
 
         Component{
@@ -171,7 +183,7 @@ Popup{
                             anchors.centerIn: parent;
                             text: model.modelData;
                             font.pixelSize: 14;
-                            color: "#666666";
+                            color: "#000000";
                         }
                     }
                 }
@@ -184,21 +196,32 @@ Popup{
                 width: grid.cellWidth;
                 height: grid.cellHeight;
                 color: "transparent";
+                radius: 10;
+                property bool m_hover: false;
+                Rectangle{
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    color: (number_item.today[0]===root.m_year && number_item.today[1]===root.m_month && number_item.today[2]===root.m_day) ? "#4fe1fc" : (parent.m_hover ? "#e0e0e0" : "transparent");
+                    width: 40;
+                    height: 40;
+                    radius: 10;
+                }
                 Column{
                     anchors.centerIn: parent;
                     spacing: 10;
 
                     Item{
                         width: cellContent.width;
-                        height: number.font.pixelSize
+                        height: number.font.pixelSize;
+                        property var today: timehelper.getDate(index,timehelper.year,timehelper.month);
+                        id: number_item;
                         Text{
                             id: number;
                             anchors.horizontalCenter: parent.horizontalCenter;
                             anchors.bottom: parent.bottom;
                             font.pixelSize: 20;
                             font.bold: true;
-                            text: timehelper.getDate(index,timehelper.year,timehelper.month);
-                            color: timehelper.getColor(index,timehelper.year,timehelper.month);
+                            text: parent.today[2];
+                            color: parent.today[1]===timehelper.month ? "#000000" : "#e0e0e0";
                         }
                     }
                     Item{
@@ -207,17 +230,27 @@ Popup{
                             id: festival;
                             anchors.horizontalCenter: parent.horizontalCenter;
                             anchors.bottom: parent.bottom;
+                            anchors.bottomMargin: 10;
                             font.pixelSize: 10;
-                            text: lunarDateHelper.changeLuanrFromSolar(timehelper.year,timehelper.month,number.text);
+                            text: lunarDateHelper.changeLuanrFromSolar(number_item.today[0],number_item.today[1],number_item.today[2]);
+                            color: number_item.today[1]===timehelper.month ? "#000000" : "#e0e0e0";
                         }
                     }
                 }
                 MouseArea{
                     anchors.fill: parent;
+                    hoverEnabled: true;
                     onClicked: {
-                        console.log(timehelper.month);
-                        console.log(timehelper.year);
-                        console.log(new Date().getDay());
+                        //注意顺序不能反
+                        root.m_day=number_item.today[2];
+                        root.m_month=number_item.today[1];
+                        root.m_year=number_item.today[0];
+                    }
+                    onEntered: {
+                        parent.m_hover=true;
+                    }
+                    onExited: {
+                        parent.m_hover=false;
                     }
                 }
             }
@@ -229,22 +262,31 @@ Popup{
         property int year: yearandmonth.year;
 
         function getDate(index, y, m){
+            var _years=year;
+            var _month=month;
             var days=getDaysInMonth(y,m);
             var start=new Date(y,m-1,1,0,0,0).getDay();
             if(start===7) start=0;
             var num=index-start+1;
-            if(num<1) return getDaysInMonth(y,m-1)+num;
-            else if(num>days) return num-days;
-            else return num;
-        }
-        function getColor(index, y, m){
-            var days=getDaysInMonth(y,m);
-            var start=new Date(y,m-1,1,0,0,0).getDay();
-            if(start===7) start=0;
-            var num=index-start+1;
-            if(num<1) return "#e0e0e0";
-            else if(num>days) return "#e0e0e0";
-            else return "#000000";
+            if(num<1){
+                num=getDaysInMonth(y,m-1)+num;
+                if(_month===1){
+                    _month=12;
+                    _years-=1;
+                }else{
+                    _month-=1;
+                }
+            }
+            else if(num>days){
+                num=num-days;
+                if(_month===12){
+                    _years+=1;
+                    _month=1;
+                }else{
+                    _month+=1;
+                }
+            }
+            return [_years,_month,num];
         }
 
         //获取这个月有多少天
@@ -271,6 +313,7 @@ Popup{
         }
     }
 
+    //农历计算组件
     LunarDateHelper{
         id: lunarDateHelper;
     }

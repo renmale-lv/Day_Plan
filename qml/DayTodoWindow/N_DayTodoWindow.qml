@@ -1,4 +1,4 @@
-import QtQuick 2.15
+﻿import QtQuick 2.15
 
 import "../Base"
 
@@ -13,21 +13,13 @@ Item {
         radius: 20;
         z: 100;
     }
-    Rectangle{
+    N_AddEvent{
+        id: addevent;
         focus: true;
         anchors.left: calendar.right;
         anchors.right: parent.right;
         anchors.top: parent.top;
         anchors.leftMargin: 7;
-        implicitHeight: 40;
-        radius: 20;
-        color: "#DDDDDD";
-        Text{
-            anchors.fill: parent;
-            text: "DayTodo";
-            verticalAlignment: Qt.AlignVCenter;
-            horizontalAlignment: Qt.AlignHCenter;
-        }
     }
     Rectangle{
         anchors.top: calendar.bottom;

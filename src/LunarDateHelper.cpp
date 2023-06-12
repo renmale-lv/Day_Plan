@@ -4,6 +4,7 @@ LunarDateHelper::LunarDateHelper(QObject *parent)
     : QObject(parent)
 {
 //    test();
+    lunar_festial<<"正月初一"<<"正月十五"<<"五月初五"<<"七月初七"<<"八月十五"<<"九月初九";
 }
 
 int LunarDateHelper::DayOfYear(int year, int month, int day){
@@ -13,6 +14,8 @@ int LunarDateHelper::DayOfYear(int year, int month, int day){
 }
 
 QString LunarDateHelper::changeLuanrFromSolar(int year, int month, int day){
+    QString festival=Calendar_Festival(month,day);
+    if(!festival.isEmpty()) return festival;
     if(year<begin_year || year>begin_year+num_year-1)  return QString("none");
 
     int year_index=year-begin_year;
@@ -45,13 +48,20 @@ QString LunarDateHelper::changeLuanrFromSolar(int year, int month, int day){
         else sub_days-=dayinmonth;
     }
     int leap_month=(lunar_Year[year_index]) >>20;
-    if(leap_month>0 && leap_month<lunar_month) --lunar_month;
-    //todo::月份 闰月
 
+    //todo 农历节日
+    //........
+
+    if(sub_days==1){
+        if(leap_month==lunar_month-1){
+            return QString("闰")+MonthName(leap_month);
+        }
+        if(leap_month>0 && leap_month<lunar_month){
+            --lunar_month;
+        }
+        return MonthName(lunar_month);
+    }
     assert(leap_month<=12);
-
-    //......
-//    return MonthName(lunar_month)+DayName(sub_days);
     return DayName(sub_days);
 }
 
@@ -75,7 +85,6 @@ QString LunarDateHelper::MonthName(int month){
 
 QString LunarDateHelper::DayName(int day){
     switch(day){
-    case 1: return QString("初一");
     case 2: return QString("初二");
     case 3: return QString("初三");
     case 4: return QString("初四");
@@ -106,14 +115,106 @@ QString LunarDateHelper::DayName(int day){
     case 29: return QString("廿九");
     case 30: return QString("三十");
     }
+    return QString("除夕");
+}
+
+QString LunarDateHelper::Calendar_Festival(int month, int day){
+    switch(month){
+        case 1: {
+            switch(day){
+                case 1: return QString("元旦节");
+            }
+            break;
+        }
+        case 3: {
+            switch(day){
+                case 8: return QString("妇女节");
+            }
+            break;
+        }
+        case 4: {
+            switch(day){
+                case 5: return QString("清明节");
+                case 20: return QString("谷雨");
+            }
+            break;
+        }
+        case 5: {
+            switch(day){
+                case 1: return QString("劳动节");
+                case 6: return QString("立夏");
+                case 21: return QString("小满");
+            }
+            break;
+        }
+        case 6: {
+            switch(day){
+                case 6: return QString("芒种");
+                case 22: return QString("夏至");
+            }
+            break;
+        }
+        case 7: {
+            switch(day){
+                case 1: return QString("建党节");
+                case 23: return QString("大暑");
+            }
+            break;
+        }
+        case 8: {
+            switch(day){
+                case 1: return QString("建军节");
+                case 8: return QString("立秋");
+                case 23: return QString("处暑");
+            }
+            break;
+        }
+        case 9: {
+            switch(day){
+                case 8: return QString("白露");
+            }
+            break;
+        }
+        case 10: {
+            switch(day){
+                case 1: return QString("国庆节");
+                case 8: return QString("寒露");
+            }
+            break;
+        }
+        case 11: {
+            switch(day){
+                case 22: return QString("小雪");
+            }
+            break;
+        }
+        case 12: {
+            switch(day){
+                case 7: return QString("大雪");
+                case 22: return QString("冬至");
+                case 25: return QString("圣诞节");
+            }
+            break;
+        }
+    }
+    return "";
+}
+
+QString LunarDateHelper::Lunar_Festival(QString Date){
+    switch(lunar_festial.indexOf(Date)){
+        case 0: return QString("春节");
+        case 1: return QString("元宵节");
+        case 2: return QString("端午节");
+        case 3: return QString("七夕节");
+        case 4: return QString("中秋节");
+        case 5: return QString("重阳节");
+        default: break;
+    }
     return "";
 }
 
 void LunarDateHelper::test(){
-    qDebug()<<changeLuanrFromSolar(2023,2,20);
-    qDebug()<<lunar_Year[2023-1901];
-    qDebug()<<int((lunar_Year[2023-1901]>>20));
-    qDebug()<<int((lunar_Year[2023-1901]>>(18))&1);
+    qDebug()<<changeLuanrFromSolar(2024,2,8);
 }
 
 

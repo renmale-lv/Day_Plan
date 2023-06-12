@@ -25,7 +25,7 @@ Rectangle {
             color: "#ffed4a";
             Text{
                 anchors.centerIn: parent;
-                text: "5月17号";
+                text: calendar.m_year+"年"+calendar.m_month+"月"+calendar.m_day+"日";
             }
         }
         onClicked: {

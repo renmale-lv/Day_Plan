@@ -18,5 +18,6 @@
         <file>qml/Base/B_Calendar.qml</file>
         <file>qml/Base/B_DateList.qml</file>
         <file>qml/DayTodoWindow/N_DateSelector.qml</file>
+        <file>qml/DayTodoWindow/N_AddEvent.qml</file>
     </qresource>
 </RCC>
