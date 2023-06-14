@@ -45,21 +45,26 @@ Item {
             delegate: Rectangle{
                 anchors.left: parent.left;
                 anchors.right: parent.right;
-                height: childrenRect.height;
+                height: 40;
                 radius: 10;
                 color: "pink";
                 property var modeldata: event_list.model[index];
                 Text {
-                    anchors.top: parent.top;
+                    id: text;
+                    anchors.verticalCenter: parent.verticalCenter;
                     anchors.left: parent.left;
-                    height: 30;
-                    width: 300;
                     anchors.topMargin: 10;
                     anchors.leftMargin: 10;
                     anchors.bottomMargin: 10;
                     font.pixelSize: 16;
                     font.family: "华文楷体";
                     text: modeldata.m_name;
+                }
+                B_StatueBar{
+                    anchors.left: text.right;
+                    anchors.leftMargin: 10;
+                    anchors.verticalCenter: parent.verticalCenter;
+                    statue: modeldata.m_statue;
                 }
                 MouseArea{
                     anchors.fill: parent;
@@ -108,6 +113,7 @@ Item {
         }
 
         B_StatueBar{
+            statue: parent.event.m_statue;
             anchors.top: event_text.bottom;
             anchors.left: parent.left;
             anchors.leftMargin: 10;

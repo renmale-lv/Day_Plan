@@ -23,8 +23,6 @@ FramelessWindow {
     minimumWidth: 1050;
     minimumHeight: 700;
     visible: true;
-    x: 100;
-    y: 100;
 
     //侧边栏
     N_SideBar{
