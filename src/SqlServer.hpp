@@ -21,6 +21,7 @@ public:
 
     Q_INVOKABLE bool add_event(QString name);
     Q_INVOKABLE QVariantList get_daytodo_event(QDate day);
+    Q_INVOKABLE QVariant get_daytodo_event_byid(int id);
 private:
     static QSqlDatabase db;
     static QSqlQuery query;

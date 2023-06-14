@@ -27,6 +27,8 @@ Rectangle {
             radius: 17;
             color: "#ffed4a";
             Text{
+                font.family: "华文楷体";
+                font.pixelSize: 14;
                 anchors.centerIn: parent;
                 text: calendar.m_year+"年"+calendar.m_month+"月"+calendar.m_day+"日";
             }
