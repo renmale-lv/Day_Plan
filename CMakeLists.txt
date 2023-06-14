@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 find_package(Qt6 COMPONENTS QuickControls2 REQUIRED)
+find_package(Qt6Sql REQUIRED)
 
 
 set(ALL_SOURCE)
@@ -32,7 +33,7 @@ set_target_properties(appDay_Plan PROPERTIES
 )
 
 target_link_libraries(appDay_Plan
-    PRIVATE Qt6::Quick Qt6::QuickControls2)
+    PRIVATE Qt6::Quick Qt6::QuickControls2 Qt6::Sql)
 
 install(TARGETS appDay_Plan
     BUNDLE DESTINATION .

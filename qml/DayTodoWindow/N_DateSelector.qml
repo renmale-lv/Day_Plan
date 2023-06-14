@@ -3,6 +3,9 @@ import QtQuick.Templates as T
 import "../Base"
 
 Rectangle {
+
+    property date day: new Date(calendar.m_year,calendar.m_month-1,calendar.m_day);
+
     B_DateList{
         id: datelist;
         anchors.top: parent.top;
