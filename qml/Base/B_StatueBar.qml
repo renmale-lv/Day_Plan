@@ -3,6 +3,7 @@
 
 Rectangle{
     property int statue;
+    property bool optional: false;
     width: 100;
     height: 20;
     radius: 10;

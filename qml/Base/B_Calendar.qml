@@ -233,7 +233,7 @@ Popup{
                             anchors.bottomMargin: 10;
                             font.pixelSize: 10;
                             text: lunarDateHelper.changeLuanrFromSolar(number_item.today[0],number_item.today[1],number_item.today[2]);
-                            color: number_item.today[1]===timehelper.month ? "#000000" : "#e0e0e0";
+                            color: "#dedede";
                         }
                     }
                 }

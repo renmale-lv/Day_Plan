@@ -14,7 +14,8 @@ void SqlServer::SqlInit(){
                             "`start_time` DATE NOT NULL DEFAULT (DATETIME('now','localtime')),"
                             "`end_time` DATE NOT NULL DEFAULT (DATETIME('now','localtime')),"
                             "`complete_time` DATE,"
-                            "`detail` TEXT"
+                            "`detail` TEXT,"
+                            "`is_range` TINYINT NOT NULL DEFAULT 0"
                         ");");
     if(!query.exec(sql)) qDebug()<<query.lastError().text();
 
@@ -77,4 +78,17 @@ QVariant SqlServer::get_daytodo_event_byid(int id){
         res=QVariant::fromValue(cnt);
     }
     return res;
+}
+
+void SqlServer::update_daytodo_event(EventModel model){
+
+//    QString sql=QString("UPDATE `daytodo_event` SET `name`='%1',statue=%2,")
+}
+
+void SqlServer::delete_daytodo_event(int id){
+    QString sql=QString("DELETE FROM `daytodo_event` WHERE `id` = %1;").arg(id);
+    if(!query.exec(sql)){
+        qDebug()<<sql;
+        qDebug()<<query.lastError().text();
+    }
 }

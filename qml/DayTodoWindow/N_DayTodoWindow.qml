@@ -1,4 +1,6 @@
-﻿import QtQuick 2.15
+﻿import QtQuick
+import QtQuick.Controls
+import QtQuick.Templates as T
 
 import "../Base"
 
@@ -58,13 +60,13 @@ Item {
                     anchors.bottomMargin: 10;
                     font.pixelSize: 16;
                     font.family: "华文楷体";
-                    text: modeldata.m_name;
+                    text: modeldata.name;
                 }
                 B_StatueBar{
                     anchors.left: text.right;
                     anchors.leftMargin: 10;
                     anchors.verticalCenter: parent.verticalCenter;
-                    statue: modeldata.m_statue;
+                    statue: modeldata.statue;
                 }
                 MouseArea{
                     anchors.fill: parent;
@@ -89,13 +91,6 @@ Item {
         property int index;
         property var event: sql.get_daytodo_event_byid(index+1);
 
-        MouseArea{
-            anchors.fill: parent;
-            onClicked: {
-                parent.visible=false;
-            }
-        }
-
         Behavior on width {
             NumberAnimation{duration: 200;}
         }
@@ -109,14 +104,65 @@ Item {
             font.family: "华文楷体";
             font.pixelSize: 24;
             height: 30;
-            text: parent.event.m_name;
+            text: parent.event.name;
         }
 
         B_StatueBar{
-            statue: parent.event.m_statue;
+            id: event_statue;
+            statue: parent.event.statue;
             anchors.top: event_text.bottom;
             anchors.left: parent.left;
             anchors.leftMargin: 10;
+        }
+
+        TextEdit{
+            anchors.left: parent.left;
+            anchors.right: parent.right;
+            anchors.bottom: parent.bottom;
+            anchors.top: event_statue.bottom;
+            anchors.margins: 7;
+            font.family: "华文楷体";
+            font.pixelSize: 12;
+        }
+
+        T.Button{
+            id: back_button;
+            width: 40;
+            height: 40;
+            anchors.top: parent.top;
+            anchors.right: parent.right;
+            anchors.margins: 10;
+            background: Rectangle{
+                anchors.fill: parent;
+                radius: 10;
+                Text{
+                    anchors.centerIn: parent;
+                    text: ">";
+                    font.family: "华文楷体";
+                    font.pixelSize: 20;
+                }
+                color: back_button.hovered ? "#e0e0e0" : "transparent";
+            }
+            onClicked: {
+                event_detail.visible=false;
+            }
+        }
+
+        T.Button{
+            id: delete_button;
+            width: 40;
+            height: 40;
+            anchors.bottom: parent.bottom;
+            anchors.left: parent.left;
+            anchors.margins: 10;
+            background: Rectangle{
+                anchors.fill: parent;
+                radius: 10;
+                color: delete_button.hovered ? "#e0e0e0" : "transparent";
+            }
+            onClicked: {
+                //todo：根据id删除
+            }
         }
     }
 
