@@ -14,7 +14,6 @@ Popup{
     }
 
 
-
     SqlServer{
         id: sql;
     }

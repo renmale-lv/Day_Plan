@@ -14,6 +14,7 @@ class EventModel
     Q_PROPERTY(QString detail READ getDetail WRITE setDetail)
     Q_PROPERTY(QDate starttime READ getStarttime WRITE setStarttime)
     Q_PROPERTY(QDate endtime READ getEndtime WRITE setEndtime)
+    Q_PROPERTY(bool range READ getRange WRITE setRange)
 
 public:
     explicit EventModel();
@@ -36,6 +37,9 @@ public:
     QDate getEndtime(){return endtime;}
     void setEndtime(QDate val){endtime=val;}
 
+    bool getRange(){return range;}
+    void setRange(bool val){range=val;}
+
 private:
     int statue;
     int id;
@@ -43,6 +47,7 @@ private:
     QString detail;
     QDate starttime;
     QDate endtime;
+    bool range;
 };
 
 #endif // EVENTMODEL_HPP

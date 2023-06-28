@@ -17,9 +17,11 @@
         <file>qml/StatisticsWindow/N_StatisticsWindow.qml</file>
         <file>qml/Base/B_Calendar.qml</file>
         <file>qml/Base/B_DateList.qml</file>
-        <file>qml/DayTodoWindow/N_DateSelector.qml</file>
         <file>qml/DayTodoWindow/N_AddEvent.qml</file>
         <file>qml/DayTodoWindow/N_Event.qml</file>
         <file>qml/Base/B_StatueBar.qml</file>
+        <file>qml/Base/B_TimeSelector.qml</file>
+        <file>qml/Base/B_DateSelector.qml</file>
+        <file>qml/DayTodoWindow/N_DelDialog.qml</file>
     </qresource>
 </RCC>

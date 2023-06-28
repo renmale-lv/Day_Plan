@@ -1,13 +1,14 @@
 ﻿import QtQuick
 import QtQuick.Controls
 import QtQuick.Templates as T
+import QtQuick.Dialogs
 
 import "../Base"
 
 import SqlServer
 
 Item {
-    N_DateSelector{
+    B_DateSelector{
         id: calendar;
         anchors.top: parent.top;
         anchors.left: parent.left;
@@ -24,6 +25,10 @@ Item {
         anchors.right: parent.right;
         anchors.top: parent.top;
         anchors.leftMargin: 7;
+        onAddevent: {
+            parent.update();
+            console.log("update");
+        }
     }
     Rectangle{
         anchors.top: calendar.bottom;
@@ -72,7 +77,7 @@ Item {
                     anchors.fill: parent;
                     onClicked: {
                         event_detail.visible=true;
-                        event_detail.index=index;
+                        event_detail.event=parent.modeldata;
                     }
                 }
             }
@@ -88,9 +93,7 @@ Item {
         anchors.topMargin: 7;
         visible: false;
 
-        property int index;
-        property var event: sql.get_daytodo_event_byid(index+1);
-
+        property var event;
         Behavior on width {
             NumberAnimation{duration: 200;}
         }
@@ -119,10 +122,12 @@ Item {
             anchors.left: parent.left;
             anchors.right: parent.right;
             anchors.bottom: parent.bottom;
-            anchors.top: event_statue.bottom;
-            anchors.margins: 7;
+            anchors.top: endTime.bottom;
+            anchors.margins: 10;
             font.family: "华文楷体";
             font.pixelSize: 12;
+            text: parent.event.detail==="" ? "/详细信息" : parent.event.detail;
+            color: parent.event.detail==="" ? "#e0e0e0" : "#ffffff";
         }
 
         T.Button{
@@ -162,11 +167,52 @@ Item {
             }
             onClicked: {
                 //todo：根据id删除
+                deldialog.open();
+                deldialog.mid=parent.event.id;
+                deldialog.mtext=parent.event.name;
             }
+        }
+
+        B_TimeSelector{
+            id: startTime;
+            anchors.top: event_statue.bottom;
+            anchors.left: parent.left;
+            anchors.right: parent.right;
+            anchors.margins: 10;
+            text: "开始时间";
+            old: parent.event.starttime;
+        }
+
+        B_TimeSelector{
+            id: endTime;
+            anchors.top: startTime.bottom;
+            anchors.left: parent.left;
+            anchors.right: parent.right;
+            anchors.margins: 10;
+            text: "结束时间";
+            visible: true;
         }
     }
 
     SqlServer{
         id: sql;
     }
+
+    N_DelDialog{
+        id: deldialog;
+        visible: false;
+        x: parent.width/2-width/2;
+        y: parent.height/2-height/2;
+
+        onAccepted: {
+            sql.delete_daytodo_event(mid);
+            event_detail.visible=false;
+            update();
+        }
+    }
+
+    function update(){
+        event_list.model=sql.get_daytodo_event(calendar.day);
+    }
 }
+

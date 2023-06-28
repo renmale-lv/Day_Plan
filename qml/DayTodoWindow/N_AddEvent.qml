@@ -9,10 +9,10 @@ Rectangle{
     implicitHeight: 40;
     radius: 20;
     color: "#DDDDDD";
+    signal addevent();
 
 
-
-    TextEdit{
+    TextInput{
         id: text_edit;
         anchors.verticalCenter: parent.verticalCenter;
         anchors.left: parent.left;
@@ -20,6 +20,14 @@ Rectangle{
         anchors.leftMargin: 10;
         anchors.rightMargin: 10;
         font.pixelSize: 18;
+
+        Keys.onReturnPressed:  {
+            if(text==="") return;
+            sql.add_event(text_edit.text);
+            console.log(text_edit.text+" 创建成功");
+            parent.addevent();
+            text="";
+        }
     }
 
     T.Button{
@@ -43,6 +51,8 @@ Rectangle{
         onClicked: {
             sql.add_event(text_edit.text);
             console.log(text_edit.text+" 创建成功");
+            parent.addevent();
+            text_edit.text="";
         }
     }
 

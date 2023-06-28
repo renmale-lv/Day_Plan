@@ -51,38 +51,51 @@ bool SqlServer::add_event(QString name){
 }
 
 QVariantList SqlServer::get_daytodo_event(QDate day){
-    QString sql=QString("SELECT `id`,`name`,`statue`,`detail` FROM `daytodo_event` WHERE '%1' BETWEEN date(`start_time`) AND date(`end_time`);").arg(day.toString("yyyy-MM-dd"));
+    QString sql=QString("SELECT `id`,`name`,`statue`,`detail`,`start_time`,`end_time`,`is_range` FROM `daytodo_event` WHERE '%1' BETWEEN date(`start_time`) AND date(`end_time`);").arg(day.toString("yyyy-MM-dd"));
     QVariantList res;
-    query.exec(sql);
+    if(!query.exec(sql)){
+        qDebug()<<sql;
+        qDebug()<<query.lastError().text();
+    }
     while(query.next()){
         EventModel cnt;
         cnt.setId(query.value(0).toInt());
         cnt.setName(query.value(1).toString());
         cnt.setStatue(query.value(2).toInt());
         cnt.setDetail(query.value(3).toString());
+        cnt.setStarttime(query.value(4).toDate());
+        cnt.setEndtime(query.value(5).toDate());
+        cnt.setRange(query.value(6).toBool());
         res.append(QVariant::fromValue(cnt));
     }
     return res;
 }
 
-QVariant SqlServer::get_daytodo_event_byid(int id){
-    QString sql=QString("SELECT `id`,`name`,`statue`,`detail` FROM `daytodo_event` WHERE `id` =%1;").arg(id);
-    query.exec(sql);
-    QVariant res;
-    if(query.next()){
-        EventModel cnt;
-        cnt.setId(query.value(0).toInt());
-        cnt.setName(query.value(1).toString());
-        cnt.setStatue(query.value(2).toInt());
-        cnt.setDetail(query.value(3).toString());
-        res=QVariant::fromValue(cnt);
-    }
-    return res;
-}
+//QVariant SqlServer::get_daytodo_event_byid(int id){
+//    QString sql=QString("SELECT `id`,`name`,`statue`,`detail`,`start_time`,`end_time` FROM `daytodo_event` WHERE `id` =%1;").arg(id);
+//    query.exec(sql);
+//    QVariant res;
+//    if(query.next()){
+//        EventModel cnt;
+//        cnt.setId(query.value(0).toInt());
+//        cnt.setName(query.value(1).toString());
+//        cnt.setStatue(query.value(2).toInt());
+//        cnt.setDetail(query.value(3).toString());
+//        cnt.setStarttime(query.value(4).toDate());
+//        cnt.setEndtime(query.value(5).toDate());
+//        res=QVariant::fromValue(cnt);
+//    }
+//    return res;
+//}
 
 void SqlServer::update_daytodo_event(EventModel model){
 
-//    QString sql=QString("UPDATE `daytodo_event` SET `name`='%1',statue=%2,")
+    QString sql=QString("UPDATE `daytodo_event` SET `name`='%1',`statue`=%2,`detail`='%3',`start_time`='%4',`end_time`='%5',`is_range`=%6 WHERE `id`=%7;")
+        .arg(model.getName()).arg(model.getStatue()).arg(model.getDetail()).arg(model.getStarttime().toString("yyyy-MM-dd")).arg(model.getEndtime().toString("yyyy-MM-dd")).arg(model.getRange()).arg(model.getId());
+    if(!query.exec(sql)){
+        qDebug()<<sql;
+        qDebug()<<query.lastError().text();
+    }
 }
 
 void SqlServer::delete_daytodo_event(int id){
@@ -92,3 +105,5 @@ void SqlServer::delete_daytodo_event(int id){
         qDebug()<<query.lastError().text();
     }
 }
+
+
