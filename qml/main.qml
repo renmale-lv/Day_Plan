@@ -17,6 +17,7 @@ import "SettingWindow"
 FramelessWindow {
     id: mainWindow;
     color: "#2C3333";
+//    color: "transparent";
     //窗口大小
     width: 1050;
     height: 700;

@@ -1,6 +1,8 @@
 ﻿#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <qqml.h>
+#include <QMetaType>
 
 #include "FramelessWindow.hpp"
 #include "LunarDateHelper.hpp"

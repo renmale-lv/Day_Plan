@@ -118,11 +118,19 @@ Item {
             anchors.leftMargin: 10;
         }
 
+        B_TimeSelector{
+            id: time;
+            anchors.top: event_statue.bottom;
+            anchors.left: parent.left;
+            anchors.right: parent.right;
+            anchors.margins: 10;
+        }
+
         TextEdit{
             anchors.left: parent.left;
             anchors.right: parent.right;
             anchors.bottom: parent.bottom;
-            anchors.top: endTime.bottom;
+            anchors.top: time.bottom;
             anchors.margins: 10;
             font.family: "华文楷体";
             font.pixelSize: 12;
@@ -132,21 +140,15 @@ Item {
 
         T.Button{
             id: back_button;
-            width: 40;
-            height: 40;
+            width: 14;
+            height: 14;
             anchors.top: parent.top;
             anchors.right: parent.right;
             anchors.margins: 10;
             background: Rectangle{
                 anchors.fill: parent;
-                radius: 10;
-                Text{
-                    anchors.centerIn: parent;
-                    text: ">";
-                    font.family: "华文楷体";
-                    font.pixelSize: 20;
-                }
-                color: back_button.hovered ? "#e0e0e0" : "transparent";
+                radius: 7;
+                color: back_button.hovered ? "#e94d56" : Qt.lighter("#e94d56");
             }
             onClicked: {
                 event_detail.visible=false;
@@ -173,25 +175,37 @@ Item {
             }
         }
 
-        B_TimeSelector{
-            id: startTime;
-            anchors.top: event_statue.bottom;
-            anchors.left: parent.left;
-            anchors.right: parent.right;
-            anchors.margins: 10;
-            text: "开始时间";
-            old: parent.event.starttime;
+        T.Button{
+            id: complete_button;
+            width: 40;
+            height: 40;
+            anchors.bottom: parent.bottom;
+            anchors.right: fail_button.left;
+            anchors.bottomMargin: 10;
+            background: Rectangle{
+                anchors.fill: parent;
+                radius: 10;
+                color: complete_button.hovered ? "#e0e0e0" : "transparent";
+            }
+            onClicked: {
+
+            }
         }
 
-        B_TimeSelector{
-            id: endTime;
-            anchors.top: startTime.bottom;
-            anchors.left: parent.left;
+        T.Button{
+            id: fail_button;
+            width: 40;
+            height: 40;
+            anchors.bottom: parent.bottom;
             anchors.right: parent.right;
             anchors.margins: 10;
-            text: "结束时间";
-            visible: true;
+            background: Rectangle{
+                anchors.fill: parent;
+                radius: 10;
+                color: fail_button.hovered ? "#e0e0e0" : "transparent";
+            }
         }
+
     }
 
     SqlServer{

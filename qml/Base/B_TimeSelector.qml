@@ -1,53 +1,115 @@
 ﻿import QtQuick
+import QtQuick.Controls
 import QtQuick.Templates as T
 
 Item {
-    height: 20;
-    property string text;
+    property date end
+    property date start
+    property string text
 
-    property date old;
-    property int m_year: calendar.m_year;
-    property int m_month: calendar.m_month;
-    property int m_day: calendar.m_day;
+    height: childrenRect.height
 
-    Text{
-        id: text;
-        anchors.left: parent.left;
-        anchors.verticalCenter: parent.verticalCenter;
-        text: parent.text;
-        font.family: "华文楷体";
-        font.pixelSize: 16;
-    }
+    Row {
+        id: time
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        spacing: 4
 
-    T.Button{
-        id: button;
-        anchors.left:text.right;
-        anchors.right: parent.right;
-        anchors.top: parent.top;
-        anchors.bottom: parent.bottom;
-        anchors.leftMargin: 10;
-        onClicked: {
-            calendar.visible=true;
+        T.Button {
+            id: starttime
+            height: 30
+            width: include_time.checked ? parent.width / 2 - 2 : parent.width;
+
+            background: Rectangle {
+                anchors.fill: parent
+                border.color: "grey"
+                border.width: 1
+                color: "red"
+                radius: 5
+
+                Text {
+                    anchors.centerIn: parent
+                    font.family: "华文楷体"
+                    font.pixelSize: 16
+                    text: "111"
+                }
+            }
+            Behavior on width{
+                RotationAnimation { duration: 200; }
+            }
+
         }
-        background: Rectangle{
-            anchors.fill: parent;
-            border.width: 1;
-            Text{
-                anchors.centerIn: parent;
-                text: calendar.m_year+"/"+calendar.m_month+"/"+calendar.m_day;
-                font.family: "华文楷体";
-                font.pixelSize: 16;
+        T.Button {
+            id: endtime
+            height: 30
+            width: parent.width / 2 - 2
+
+            background: Rectangle {
+                anchors.fill: parent
+                border.color: "grey"
+                border.width: 1
+                color: "yellow"
+                radius: 5
+
+                Text {
+                    anchors.centerIn: parent
+                    font.family: "华文楷体"
+                    font.pixelSize: 16;
+                }
+            }
+
+            visible: include_time.checked ? true : false;
+            Behavior on width{
+                RotationAnimation { duration: 200; }
             }
         }
     }
-
-    B_Calendar{
+    Item {
         id: calendar;
-        x: button.x+button.width-this.width;
-        y: button.y+button.height;
-        m_year: old.getFullYear();
-        m_month: old.getMonth()+1;
-        m_day: old.getDate();
-    }
+        property int selected: 1;
 
+        anchors.left: parent.left;
+        anchors.right: parent.right;
+        anchors.top: time.bottom;
+        anchors.topMargin: 4;
+        height: 100;
+
+        Rectangle {
+            anchors.fill: parent;
+            color: "green";
+            radius: 10;
+        }
+    }
+    Switch {
+        id: include_time;
+        anchors.left: parent.left;
+        anchors.top: calendar.bottom;
+        text: "include time";
+        font.family: "华文楷体";
+        font.pixelSize: 14;
+
+        indicator: Rectangle {
+            implicitWidth: 40;
+            implicitHeight: 20;
+            x: include_time.leftPadding;
+            y: parent.height / 2 - height / 2;
+            radius: 10;
+            color: include_time.checked ? "#2383e2" : "#dbdad6";
+            border.color: include_time.checked ? "#2383e2" : "#dbdad6";
+
+            Rectangle {
+                x: include_time.checked ? parent.width - width-2 : 2;
+                y: 2;
+                width: 16;
+                height: 16;
+                radius: 8;
+                border.width: 0;
+                color: "#ffffff";
+                Behavior on x{
+                    RotationAnimation { duration: 200; }
+                }
+            }
+        }
+    }
 }

@@ -1,17 +1,20 @@
 ﻿import QtQuick
 import QtQuick.Controls
 import QtQml
-import QtQuick.Layouts
 import QtQuick.Templates as T
 
 import SqlServer
 
-Popup{
+Item{
     id: root;
+    visible: false;
+    property var event;
     background: Rectangle{
         anchors.fill: parent;
         radius: 20;
     }
+
+    
 
 
     SqlServer{

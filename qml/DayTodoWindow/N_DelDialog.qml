@@ -1,12 +1,11 @@
 ﻿import QtQuick
 import QtQuick.Controls
-import QtQuick.Window
 import QtQuick.Templates as T
 
 Dialog{
     id: root;
     width: 400;
-    height: 150;
+    height: 160;
     closePolicy: Popup.NoAutoClose;
     property int mid;
     property string mtext;

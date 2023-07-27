@@ -106,4 +106,17 @@ void SqlServer::delete_daytodo_event(int id){
     }
 }
 
+void SqlServer::complete_daytodo_event(int id, bool complete){
+//    QString sql;
+//    if(complete){
+//        sql=QString();
+//    }else{
+//        sql=QString();
+//    }
+//    if(!query.exec(sql)){
+//        qDebug()<<sql;
+//        qDebug()<<query.lastError().text();
+//    }
+}
+
 
