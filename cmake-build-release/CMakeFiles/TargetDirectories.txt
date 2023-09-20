@@ -1,9 +1,5 @@
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/appDay_Plan.dir
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/edit_cache.dir
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/rebuild_cache.dir
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/list_install_components.dir
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/install.dir
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/install/local.dir
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/install/strip.dir
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/appDay_Plan_autogen_timestamp_deps.dir
-D:/Qml_Code/Day_Plan/cmake-build-release/CMakeFiles/appDay_Plan_autogen.dir
+D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob.dir
+D:/C++_Project/Noob/cmake-build-release/CMakeFiles/ALL_BUILD.dir
+D:/C++_Project/Noob/cmake-build-release/CMakeFiles/ZERO_CHECK.dir
+D:/C++_Project/Noob/cmake-build-release/Design/CMakeFiles/Design.dir
+D:/C++_Project/Noob/cmake-build-release/Design/CMakeFiles/ALL_BUILD.dir

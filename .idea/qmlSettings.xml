@@ -4,18 +4,11 @@
     <option name="myCurrentProfile" value="Release" />
     <option name="mySettingsPerProfile">
       <map>
-        <entry key="">
-          <value>
-            <PerProfileState>
-              <option name="myCustomQmlPath" value="C:\Qt\6.2.4\msvc2019_64\include\QtQml" />
-            </PerProfileState>
-          </value>
-        </entry>
         <entry key="Release">
           <value>
             <PerProfileState>
-              <option name="myQmlPath" value="C:/Qt/6.2.4/mingw_64/./qml" />
-              <option name="myQtBinPath" value="C:/Qt/6.2.4/mingw_64/bin" />
+              <option name="myQmlPath" value="C:/Qt/6.2.4/msvc2019_64/./qml" />
+              <option name="myQtBinPath" value="C:/Qt/6.2.4/msvc2019_64/bin" />
             </PerProfileState>
           </value>
         </entry>

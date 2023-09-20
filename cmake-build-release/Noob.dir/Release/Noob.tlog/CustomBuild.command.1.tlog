@@ -1,0 +1,50 @@
+^D:\C++_PROJECT\NOOB\CMAKE-BUILD-RELEASE\CMAKEFILES\E73BDD9BF00DEFC184356F004775A0FA\QRC_QML.CPP.RULE
+setlocal
+cd D:\C++_Project\Noob\cmake-build-release
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autorcc D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_qml_EWIEGA46WW_Info.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autorcc D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_qml_EWIEGA46WW_Info.json Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autorcc D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_qml_EWIEGA46WW_Info.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autorcc D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_qml_EWIEGA46WW_Info.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\C++_PROJECT\NOOB\CMAKE-BUILD-RELEASE\CMAKEFILES\E73BDD9BF00DEFC184356F004775A0FA\QRC_IMGS.CPP.RULE
+setlocal
+cd D:\C++_Project\Noob\cmake-build-release
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autorcc D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_imgs_EWIEGA46WW_Info.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autorcc D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_imgs_EWIEGA46WW_Info.json Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autorcc D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_imgs_EWIEGA46WW_Info.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -E cmake_autorcc D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_imgs_EWIEGA46WW_Info.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\C++_PROJECT\NOOB\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -SD:/C++_Project/Noob -BD:/C++_Project/Noob/cmake-build-release --check-stamp-file D:/C++_Project/Noob/cmake-build-release/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\C++_Project\Noob\cmake-build-release\Noob_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\C++_Project\Noob\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\C++_Project\Noob\cmake-build-release\Noob_autogen\EWIEGA46WW\qrc_qml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\C++_Project\Noob\cmake-build-release\Noob_autogen\EWIEGA46WW\qrc_imgs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\C++_Project\Noob\cmake-build-release\Noob_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\C++_Project\Noob\cmake-build-release\Noob_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\C++_Project\Noob\cmake-build-release\Noob_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\C++_Project\Noob\cmake-build-release\CMakeFiles\e73bdd9bf00defc184356f004775a0fa\qrc_qml.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\C++_Project\Noob\cmake-build-release\CMakeFiles\e73bdd9bf00defc184356f004775a0fa\qrc_imgs.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\C++_Project\Noob\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\C++_Project\Noob\qml.qrc" />
+    <None Include="D:\C++_Project\Noob\imgs.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{166A5D35-9929-30A9-9F81-6C7AB8E9B1E0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6F44BA17-AFA9-3F92-928E-088551D0DC79}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

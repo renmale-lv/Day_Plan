@@ -1,27 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/main.qml</file>
-        <file>qml/SideBar/N_SideBar.qml</file>
-        <file>qml/SideBar/N_CheckButton.qml</file>
-        <file>qml/BottomBar/N_BottomBar.qml</file>
-        <file>qml/DayTodoWindow/N_DayTodoWindow.qml</file>
-        <file>qml/OverviewWindow/N_OverviewWindow.qml</file>
-        <file>qml/MusicWindow/N_MusicWindow.qml</file>
-        <file>image/DayTodo.png</file>
-        <file>image/Music.png</file>
-        <file>image/MyBlog.png</file>
-        <file>image/Overview.png</file>
-        <file>image/Setting.png</file>
-        <file>image/Statistics.png</file>
-        <file>qml/SettingWindow/N_SettingWindow.qml</file>
-        <file>qml/StatisticsWindow/N_StatisticsWindow.qml</file>
-        <file>qml/Base/B_Calendar.qml</file>
-        <file>qml/Base/B_DateList.qml</file>
-        <file>qml/DayTodoWindow/N_AddEvent.qml</file>
-        <file>qml/DayTodoWindow/N_Event.qml</file>
-        <file>qml/Base/B_StatueBar.qml</file>
-        <file>qml/Base/B_TimeSelector.qml</file>
-        <file>qml/Base/B_DateSelector.qml</file>
-        <file>qml/DayTodoWindow/N_DelDialog.qml</file>
+        <file>Qml/Main.qml</file>
     </qresource>
 </RCC>

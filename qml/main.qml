@@ -1,103 +1,143 @@
-﻿import QtQuick
-import QtQuick.Controls
-import QtQuick.Window
-import QtQuick.Layouts
+﻿import QtQuick 2.0
+import QtQuick.Controls 2.1
+import Test 1.0
 import QtQuick.Templates as T
 
-import FramelessWindow
-
-import "SideBar"
-import "BottomBar"
-import "DayTodoWindow"
-import "OverviewWindow"
-import "MusicWindow"
-import "StatisticsWindow"
-import "SettingWindow"
-
 FramelessWindow {
-    id: mainWindow;
-    color: "#2C3333";
-//    color: "transparent";
-    //窗口大小
-    width: 1050;
-    height: 700;
-    minimumWidth: 1050;
-    minimumHeight: 700;
-    visible: true;
+    id: framelessWindow
+    minimumHeight: 800
+    minimumWidth: 1300
+    visible: true
 
-    //侧边栏
-    N_SideBar{
-        id: sidebar;
-        anchors.left: parent.left;
-        anchors.top: parent.top;
-        anchors.bottom: parent.bottom;
-        anchors.topMargin: 7;
-        anchors.leftMargin: 7;
-        anchors.bottomMargin: 7;
-        width: 200;
-        mainWindow: mainWindow;
+    default property alias content: content.children
 
-        onSelectindexChanged: {
-            switch(selectindex){
-            case 1: myloader.sourceComponent=dayTodoPage; break;
-            case 2: myloader.sourceComponent=overviewPage; break;
-            case 3: myloader.sourceComponent=musicPage; break;
-            case 4: myloader.sourceComponent=statisticsPage; break;
-            case 5: myloader.sourceComponent=settingPage; break;
+    Item {
+        id: content
+        anchors.fill: parent
+        anchors.margins: framelessWindow.borderMargins
+        z: -100
+    }
+
+
+    property Component titleItem: Component {
+        id: titleCom
+        Item {
+            id: title
+            anchors.fill: parent
+
+            // 最小化、最大化、关闭按钮
+            Row {
+                spacing: 7
+
+                anchors {
+                    bottom: parent.bottom
+                    right: parent.right
+                    rightMargin: 10
+                    top: parent.top
+                }
+                T.Button {
+                    id: minButton
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: 16
+                    width: 16
+
+                    onClicked: {
+                        showMinimized();
+                    }
+
+                    background: Rectangle {
+                        color: minButton.hovered ? "#2be33f" : "#86ff93"
+                        radius: 8
+                    }
+                }
+                T.Button {
+                    id: maxButton
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: 16
+                    width: 16
+
+                    onClicked: {
+                        if (isMaximized()) {
+                            showNormal();
+                        } else {
+                            showMaximized();
+                        }
+                    }
+
+                    background: Rectangle {
+                        color: maxButton.hovered ? "#f2bf2f" : "#ffe69e"
+                        radius: 8
+                    }
+                }
+                T.Button {
+                    id: closeButton
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: 16
+                    width: 16
+
+                    onClicked: {
+                        close();
+                    }
+
+                    background: Rectangle {
+                        color: closeButton.hovered ? "#e94d56" : "#ffb3b7"
+                        radius: 8
+                    }
+                }
+            }
+
+            // Logo
+            Row {
+                id: logoRow
+                spacing: 7
+
+                anchors {
+                    bottom: parent.bottom
+                    horizontalCenter: parent.horizontalCenter
+                    top: parent.top
+                }
+                Image {
+                    id: logo
+                    height: 30
+                    source: "qrc:/Images/Logo.png"
+                    width: 30
+
+                    anchors {
+                        left: parent.left
+                        verticalCenter: parent.verticalCenter
+                    }
+                }
+                Text {
+                    id: logoText
+                    text: "Journal"
+
+                    font {
+                        family: "鍗庢枃妤蜂綋"
+                        pixelSize: 18
+                    }
+                    anchors {
+                        left: logo.right
+                        leftMargin: 5
+                        verticalCenter: parent.verticalCenter
+                    }
+                }
             }
         }
     }
 
-    //底栏
-    N_BottomBar{
-        id: bottombar;
-        anchors.left: sidebar.right;
-        anchors.right: parent.right;
-        anchors.bottom: parent.bottom;
-        anchors.leftMargin: 7;
-        anchors.bottomMargin: 7;
-        anchors.rightMargin: 7;
-    }
+    Loader {
+        id: titleLoader
+        height: 35
+        sourceComponent: titleCom
 
-    //主体窗口
-    Loader{
-        id: myloader;
-        anchors.top: parent.top;
-        anchors.left: sidebar.right;
-        anchors.right: parent.right;
-        anchors.bottom: bottombar.top;
-        anchors.margins: 7;
-    }
-    Component.onCompleted: myloader.sourceComponent=dayTodoPage;
+        onLoaded: {
+            setTitleBar(titleLoader.item);
+        }
 
-    Component{
-        id: dayTodoPage;
-        N_DayTodoWindow{
-            anchors.fill: parent;
-        }
-    }
-    Component{
-        id: overviewPage;
-        N_OverviewWindow{
-            anchors.fill: parent;
-        }
-    }
-    Component{
-        id: musicPage;
-        N_MusicWindow{
-            anchors.fill: parent;
-        }
-    }
-    Component{
-        id: statisticsPage;
-        N_StatisticsWindow{
-            anchors.fill: parent;
-        }
-    }
-    Component{
-        id: settingPage;
-        N_SettingWindow{
-            anchors.fill: parent;
+        anchors {
+            left: content.left
+            right: content.right
+            top: content.top
         }
     }
 }

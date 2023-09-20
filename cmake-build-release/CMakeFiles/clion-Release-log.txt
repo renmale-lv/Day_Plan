@@ -1,13 +1,8 @@
-"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.1.4/bin/ninja/win/x64/ninja.exe" -DCMAKE_PREFIX_PATH=C:/Qt/6.5.1 -G Ninja -S D:\Qml_Code\Day_Plan -B D:\Qml_Code\Day_Plan\cmake-build-release
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
--- Found Threads: TRUE  
--- Performing Test HAVE_STDATOMIC
--- Performing Test HAVE_STDATOMIC - Success
--- Found WrapAtomic: TRUE  
+"C:\Program Files\JetBrains\CLion 2023.1.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -S D:\C++_Project\Noob -B D:\C++_Project\Noob\cmake-build-release
+-- Selecting Windows SDK version 10.0.22000.0 to target Windows 10.0.22621.
 -- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
 -- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
-Qt
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
 -- Configuring done
 -- Generating done
--- Build files have been written to: D:/Qml_Code/Day_Plan/cmake-build-release
+-- Build files have been written to: D:/C++_Project/Noob/cmake-build-release
