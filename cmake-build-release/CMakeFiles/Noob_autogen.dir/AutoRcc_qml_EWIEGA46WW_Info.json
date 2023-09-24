@@ -9,7 +9,13 @@
 	"INCLUDE_DIR_MinSizeRel" : "D:/C++_Project/Noob/cmake-build-release/Noob_autogen/include_MinSizeRel",
 	"INCLUDE_DIR_RelWithDebInfo" : "D:/C++_Project/Noob/cmake-build-release/Noob_autogen/include_RelWithDebInfo",
 	"INCLUDE_DIR_Release" : "D:/C++_Project/Noob/cmake-build-release/Noob_autogen/include_Release",
-	"INPUTS" : [ "D:/C++_Project/Noob/Qml/Main.qml" ],
+	"INPUTS" : 
+	[
+		"D:/C++_Project/Noob/Qml/main.qml",
+		"D:/C++_Project/Noob/Qml/DayTodoPage/J_DayTodoPage.qml",
+		"D:/C++_Project/Noob/Qml/SideBar/J_SideBar.qml",
+		"D:/C++_Project/Noob/Qml/StatusBar/J_StatusBar.qml"
+	],
 	"LOCK_FILE" : "D:/C++_Project/Noob/cmake-build-release/CMakeFiles/Noob_autogen.dir/AutoRcc_qml_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : true,
 	"OPTIONS" : [ "-name", "qml" ],

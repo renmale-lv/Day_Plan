@@ -1,0 +1,7 @@
+module Noob
+linktarget MyAppplugin
+optional plugin MyAppplugin
+classname NoobPlugin
+typeinfo MyApp.qmltypes
+prefer :/Noob/
+

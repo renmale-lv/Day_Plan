@@ -6,8 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-#add_definitions(QT_DEPRECATED_WARNINGS)
+set(CMAKE_CXX_STANDARD 17)
 
 find_package(Qt6 6.2 REQUIRED COMPONENTS Quick Widgets Core QuickControls2 Gui)
 
@@ -17,9 +16,11 @@ qt_add_executable(Noob
     main.cpp qml.qrc imgs.qrc
 )
 
+
 target_link_libraries(Noob
     PUBLIC Qt6::Quick Qt6::Widgets Qt6::QuickControls2 Qt6::Core Design
 )
 
 target_include_directories(Noob
     PUBLIC ./Design)
+

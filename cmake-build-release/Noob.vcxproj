@@ -358,7 +358,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\C++_Project\Noob\qml.qrc;D:\C++_Project\Noob\cmake-build-release\CMakeFiles\Noob_autogen.dir\AutoRcc_qml_EWIEGA46WW_Info.json;D:\C++_Project\Noob\Qml\Main.qml;C:\Qt\6.2.4\msvc2019_64\.\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\C++_Project\Noob\qml.qrc;D:\C++_Project\Noob\cmake-build-release\CMakeFiles\Noob_autogen.dir\AutoRcc_qml_EWIEGA46WW_Info.json;D:\C++_Project\Noob\Qml\main.qml;D:\C++_Project\Noob\Qml\DayTodoPage\J_DayTodoPage.qml;D:\C++_Project\Noob\Qml\SideBar\J_SideBar.qml;D:\C++_Project\Noob\Qml\StatusBar\J_StatusBar.qml;C:\Qt\6.2.4\msvc2019_64\.\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\C++_Project\Noob\cmake-build-release\Noob_autogen\EWIEGA46WW\qrc_qml.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Automatic RCC for qml.qrc</Message>
@@ -381,7 +381,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\C++_Project\Noob\qml.qrc;D:\C++_Project\Noob\cmake-build-release\CMakeFiles\Noob_autogen.dir\AutoRcc_qml_EWIEGA46WW_Info.json;D:\C++_Project\Noob\Qml\Main.qml;C:\Qt\6.2.4\msvc2019_64\.\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\C++_Project\Noob\qml.qrc;D:\C++_Project\Noob\cmake-build-release\CMakeFiles\Noob_autogen.dir\AutoRcc_qml_EWIEGA46WW_Info.json;D:\C++_Project\Noob\Qml\main.qml;D:\C++_Project\Noob\Qml\DayTodoPage\J_DayTodoPage.qml;D:\C++_Project\Noob\Qml\SideBar\J_SideBar.qml;D:\C++_Project\Noob\Qml\StatusBar\J_StatusBar.qml;C:\Qt\6.2.4\msvc2019_64\.\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\C++_Project\Noob\cmake-build-release\Noob_autogen\EWIEGA46WW\qrc_qml.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Automatic RCC for qml.qrc</Message>
@@ -404,7 +404,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\C++_Project\Noob\qml.qrc;D:\C++_Project\Noob\cmake-build-release\CMakeFiles\Noob_autogen.dir\AutoRcc_qml_EWIEGA46WW_Info.json;D:\C++_Project\Noob\Qml\Main.qml;C:\Qt\6.2.4\msvc2019_64\.\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\C++_Project\Noob\qml.qrc;D:\C++_Project\Noob\cmake-build-release\CMakeFiles\Noob_autogen.dir\AutoRcc_qml_EWIEGA46WW_Info.json;D:\C++_Project\Noob\Qml\main.qml;D:\C++_Project\Noob\Qml\DayTodoPage\J_DayTodoPage.qml;D:\C++_Project\Noob\Qml\SideBar\J_SideBar.qml;D:\C++_Project\Noob\Qml\StatusBar\J_StatusBar.qml;C:\Qt\6.2.4\msvc2019_64\.\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\C++_Project\Noob\cmake-build-release\Noob_autogen\EWIEGA46WW\qrc_qml.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Automatic RCC for qml.qrc</Message>
@@ -427,7 +427,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\C++_Project\Noob\qml.qrc;D:\C++_Project\Noob\cmake-build-release\CMakeFiles\Noob_autogen.dir\AutoRcc_qml_EWIEGA46WW_Info.json;D:\C++_Project\Noob\Qml\Main.qml;C:\Qt\6.2.4\msvc2019_64\.\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\C++_Project\Noob\qml.qrc;D:\C++_Project\Noob\cmake-build-release\CMakeFiles\Noob_autogen.dir\AutoRcc_qml_EWIEGA46WW_Info.json;D:\C++_Project\Noob\Qml\main.qml;D:\C++_Project\Noob\Qml\DayTodoPage\J_DayTodoPage.qml;D:\C++_Project\Noob\Qml\SideBar\J_SideBar.qml;D:\C++_Project\Noob\Qml\StatusBar\J_StatusBar.qml;C:\Qt\6.2.4\msvc2019_64\.\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\C++_Project\Noob\cmake-build-release\Noob_autogen\EWIEGA46WW\qrc_qml.cpp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>

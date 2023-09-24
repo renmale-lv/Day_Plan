@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/Noob/">
+    <file alias="main.qml">D:/C++_Project/Noob/main.qml</file>
+  </qresource>
+</RCC>
+

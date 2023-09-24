@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>Qml/Main.qml</file>
+        <file>Qml/main.qml</file>
+        <file>Qml/SideBar/J_SideBar.qml</file>
+        <file>Qml/StatusBar/J_StatusBar.qml</file>
+        <file>Qml/DayTodoPage/J_DayTodoPage.qml</file>
     </qresource>
 </RCC>
